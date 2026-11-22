@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "target_device_confirmed": true,
+  "device_name": "marine-edge-workstation-01",
+  "device_id": "marine-edge-workstation-01",
+  "execution_node": "EK",
+  "CPU": {
+    "name": "Intel(R) Core(TM) i5-14400F",
+    "cores": 10,
+    "threads": 16,
+    "base_clock_GHz": 2.5
+  },
+  "GPU": {
+    "available": true,
+    "name": "NVIDIA GeForce RTX 4060",
+    "driver_version": "32.0.16.1088",
+    "device_index": 0,
+    "driver_date": "2026-07-22T08:00:00+08:00",
+    "nvidia_driver_version": "610.88"
+  },
+  "NPU": {
+    "available": false,
+    "name": null,
+    "runtime": null,
+    "verification": "User-designated none; i5-14400F has no specified NPU"
+  },
+  "RAM": {
+    "bytes": 34359738368,
+    "memory_type": "DDR4",
+    "speed_MT_s": 3200,
+    "OS_usable_bytes": 34193793024
+  },
+  "VRAM": {
+    "bytes": 8585740288
+  },
+  "unified_memory": {
+    "bytes": null
+  },
+  "OS": {
+    "name": "Microsoft Windows 11 家用版",
+    "version": "10.0.26300",
+    "build": "26300"
+  },
+  "runtime": {
+    "name": "Ollama",
+    "version": "0.35.0",
+    "endpoint": "http://127.0.0.1:11434",
+    "log_path": "C:\\Users\\ethan\\AppData\\Local\\Ollama\\server.log"
+  },
+  "storage": {
+    "device": "NVMe SSD: XPG GAMMIX S50 CORE",
+    "capacity_bytes": 1000204886016,
+    "free_bytes": null
+  },
+  "power_measurement": {
+    "available": false,
+    "sensor": null,
+    "scope": null
+  },
+  "thermal_measurement": {
+    "available": true,
+    "sensor": "nvidia-smi",
+    "scope": "GPU_sensor"
+  },
+  "deployment_mode": "generator_only",
+  "runtime_settings": {
+    "CPU_threads": null,
+    "batch_size": null,
+    "GPU_offload": null,
+    "memory_mode": null,
+    "power_mode": "電源配置 GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (平衡)",
+    "cooling": null
+  },
+  "acceptance_thresholds": null,
+  "_notes": "User-designated local edge inference workstation; not embedded/Jetson. Existing runtime defaults, no tuning.",
+  "shared_GPU_memory": {
+    "capacity_GiB_approx": 15.9,
+    "capacity_source": "user Windows display",
+    "measured_capacity_bytes": null,
+    "scope": "system RAM-backed WDDM shared GPU memory, not dedicated VRAM or a unified pool"
+  }
+}

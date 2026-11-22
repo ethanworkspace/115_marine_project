@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Phase 19 target specification, including explicitly pending profile",
+  "type": "object",
+  "required": ["schema_version", "target_device_confirmed", "device_name", "device_id", "execution_node", "CPU", "GPU", "NPU", "RAM", "VRAM", "unified_memory", "OS", "runtime", "storage", "power_measurement", "thermal_measurement", "deployment_mode", "runtime_settings", "acceptance_thresholds"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "target_device_confirmed": {"type": "boolean"},
+    "device_name": {"type": ["string", "null"]},
+    "device_id": {"type": ["string", "null"]},
+    "execution_node": {"type": ["string", "null"]},
+    "CPU": {"type": "object", "required": ["name", "cores", "threads"], "properties": {"name": {"type": ["string", "null"]}, "cores": {"type": ["integer", "null"], "minimum": 1}, "threads": {"type": ["integer", "null"], "minimum": 1}}},
+    "GPU": {"$ref": "#/$defs/accelerator"},
+    "NPU": {"$ref": "#/$defs/accelerator"},
+    "RAM": {"$ref": "#/$defs/memory"},
+    "VRAM": {"$ref": "#/$defs/memory"},
+    "unified_memory": {"$ref": "#/$defs/memory"},
+    "OS": {"type": "object", "required": ["name", "version"], "properties": {"name": {"type": ["string", "null"]}, "version": {"type": ["string", "null"]}}},
+    "runtime": {"type": "object", "required": ["name", "version", "endpoint"], "properties": {"name": {"type": ["string", "null"]}, "version": {"type": ["string", "null"]}, "endpoint": {"type": ["string", "null"]}}},
+    "storage": {"type": "object", "required": ["device", "capacity_bytes", "free_bytes"], "properties": {"device": {"type": ["string", "null"]}, "capacity_bytes": {"type": ["integer", "null"], "minimum": 0}, "free_bytes": {"type": ["integer", "null"], "minimum": 0}}},
+    "power_measurement": {"$ref": "#/$defs/sensor"},
+    "thermal_measurement": {"$ref": "#/$defs/sensor"},
+    "deployment_mode": {"enum": ["generator_only", "full_rag"]},
+    "runtime_settings": {"type": "object"},
+    "acceptance_thresholds": {"type": ["object", "null"]}
+  },
+  "$defs": {
+    "accelerator": {"type": "object", "required": ["available", "name"], "properties": {"available": {"type": ["boolean", "null"]}, "name": {"type": ["string", "null"]}}},
+    "memory": {"type": "object", "required": ["bytes"], "properties": {"bytes": {"type": ["integer", "null"], "minimum": 0}}},
+    "sensor": {"type": "object", "required": ["available", "sensor", "scope"], "properties": {"available": {"type": "boolean"}, "sensor": {"type": ["string", "null"]}, "scope": {"type": ["string", "null"]}}}
+  }
+}

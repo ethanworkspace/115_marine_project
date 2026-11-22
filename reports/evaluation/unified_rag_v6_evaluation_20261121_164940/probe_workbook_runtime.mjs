@@ -1,0 +1,6 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {Workbook,SpreadsheetFile} from '@oai/artifact-tool';
+const w=path.dirname(fileURLToPath(import.meta.url)),rows=(await fs.readFile(path.join(w,'context_precision_detailed.jsonl'),'utf8')).trim().split(/\r?\n/).map(JSON.parse).filter(x=>x.p_at_5!==null);
+const b=Workbook.create(),s=b.worksheets.add('Actual_P5_Probe');s.showGridLines=false;s.getRange('A1:D13').format.font={name:'Arial',size:10};s.getRange('A1:D13').format.columnWidth=22;s.getRange('A1:D1').values=[['Question','P@5','N','Mean']];s.getRange('A2:B13').values=rows.map(x=>[x.question_id,x.p_at_5]);s.getRange('C2').formulas=[['=COUNT(B2:B13)']];s.getRange('D2').formulas=[['=AVERAGE(B2:B13)']];s.tables.add('A1:B13',true,'ActualP5Probe');s.freezePanes.freezeRows(1);s.getRange('A1:D1').format={fill:'#243F59',font:{bold:true,color:'#FFFFFF'},horizontalAlignment:'center',verticalAlignment:'center',rowHeight:30};s.getRange('B2:B13').setNumberFormat('0.00');await b.recalculate();const check=await b.inspect({kind:'region',sheetId:'Actual_P5_Probe',range:'A1:D4',maxChars:2500});console.log(check.ndjson);const bytes=await SpreadsheetFile.exportXlsx(b);await bytes.save(path.join(w,'outputs','actual_p5_runtime_probe.xlsx'));console.log('Actual 12-question P@5 runtime probe passed');

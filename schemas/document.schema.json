@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Aquaculture RAG document manifest",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "document_id", "title", "source_id", "organization", "source_url",
+    "source_tier", "publication_date", "download_date", "effective_date",
+    "expiry_date", "version", "legal_status", "species", "topics",
+    "document_type", "language", "checksum", "file_path", "file_size",
+    "parser_version", "ingestion_status"
+  ],
+  "properties": {
+    "document_id": {"type": "string", "format": "uuid"},
+    "title": {"type": "string", "minLength": 1},
+    "source_id": {"type": "string", "minLength": 1},
+    "organization": {"type": ["string", "null"]},
+    "source_url": {"type": ["string", "null"], "format": "uri"},
+    "source_tier": {"oneOf": [{"type": "integer", "enum": [1, 2, 3, 4]}, {"type": "null"}]},
+    "publication_date": {"type": ["string", "null"], "format": "date"},
+    "download_date": {"type": ["string", "null"], "format": "date"},
+    "effective_date": {"type": ["string", "null"], "format": "date"},
+    "expiry_date": {"type": ["string", "null"], "format": "date"},
+    "version": {"type": ["string", "null"]},
+    "legal_status": {"type": "string", "enum": ["current", "superseded", "repealed", "historical", "draft", "unknown"]},
+    "species": {"type": "array", "items": {"type": "string"}},
+    "topics": {"type": "array", "items": {"type": "string"}},
+    "document_type": {"type": "string", "minLength": 1},
+    "language": {"type": ["string", "null"]},
+    "checksum": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "file_path": {"type": "string", "minLength": 1},
+    "file_size": {"type": "integer", "minimum": 0},
+    "parser_version": {"type": "string", "minLength": 1},
+    "ingestion_status": {"type": "string", "enum": ["registered", "indexed", "failed"]},
+    "duplicate_of": {"type": ["string", "null"], "format": "uuid"}
+  }
+}

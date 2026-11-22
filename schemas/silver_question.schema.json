@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI-generated Silver Benchmark Question",
+  "description": "Automatically mapped Silver reference record; not human Gold ground truth.",
+  "type": "object",
+  "required": [
+    "question_id", "species_candidate", "question", "reference_answer", "category",
+    "question_type", "risk_level", "source_workbook", "source_sheet", "source_row",
+    "expected_sources", "expected_facts", "benchmark_type", "generation_source", "question_origin",
+    "evidence_mapping_type", "mapping_backend",
+    "evidence_mapping_status", "mapped_chunks", "mapped_pages", "mapped_documents"
+  ],
+  "properties": {
+    "question_id": {"type": "string", "minLength": 1},
+    "candidate_id": {"type": ["string", "null"]},
+    "species_candidate": {"type": ["string", "null"]},
+    "question": {"type": ["string", "null"]},
+    "reference_answer": {"type": ["string", "null"]},
+    "category": {"type": ["string", "null"]},
+    "question_type": {"type": ["string", "null"]},
+    "difficulty_candidate": {"type": ["string", "null"]},
+    "risk_level": {"enum": ["normal", "high"]},
+    "source_workbook": {"type": ["string", "null"]},
+    "source_sheet": {"type": ["string", "null"]},
+    "source_row": {"type": ["integer", "null"]},
+    "expected_sources": {"type": "array", "items": {"type": "object"}},
+    "expected_facts": {"type": "array", "items": {"type": "object"}},
+    "benchmark_type": {"const": "silver"},
+    "generation_source": {"const": "ai_question_bank"},
+    "question_origin": {"const": "ai_generated"},
+    "evidence_mapping_type": {"const": "auto_mapped"},
+    "mapping_backend": {"const": "lexical_only"},
+    "source_verification_status": {"enum": ["pending", "verified", "failed"]},
+    "evidence_mapping_status": {"enum": ["exact", "high_confidence", "medium_confidence", "low_confidence", "unmapped"]},
+    "mapping_method": {"type": "array", "items": {"type": "string"}},
+    "mapping_score": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "fact_mapping": {"type": "array", "items": {"type": "object"}},
+    "mapped_chunks": {"type": "array", "items": {"type": "object", "required": ["chunk_id", "document_id", "page"]}},
+    "mapped_pages": {"type": "array", "items": {"type": "object", "required": ["document_id", "page"]}},
+    "mapped_documents": {"type": "array", "items": {"type": "string"}},
+    "mapping_note": {"type": "string"}
+  }
+}

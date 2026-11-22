@@ -1,0 +1,77 @@
+{
+  "description": "JSON-compatible YAML 1.2. Registry records are not assigned to documents automatically. Confirm a document's URL and issuing organization before changing its source_id.",
+  "sources": [
+    {
+      "source_id": "unverified",
+      "organization": null,
+      "source_tier": null,
+      "source_type": "unverified",
+      "trusted_for": [],
+      "homepage": null,
+      "notes": "Default for existing files without independently verified source provenance. Null tier means unranked, not Tier 4."
+    },
+    {
+      "source_id": "moa_official",
+      "organization": "農業部",
+      "source_tier": 1,
+      "source_type": "government_agency",
+      "trusted_for": ["official_agriculture_guidance", "official_regulations"],
+      "homepage": null,
+      "notes": "Registry candidate only. Add a verified homepage and assign documents only after checking their source URL."
+    },
+    {
+      "source_id": "fisheries_agency_official",
+      "organization": "農業部漁業署",
+      "source_tier": 1,
+      "source_type": "government_agency",
+      "trusted_for": ["official_fisheries_guidance", "aquaculture_sop", "official_notices"],
+      "homepage": null,
+      "notes": "Registry candidate only. A title mentioning the agency is not sufficient evidence for assignment."
+    },
+    {
+      "source_id": "fisheries_research_official",
+      "organization": "農業部水產試驗所",
+      "source_tier": 1,
+      "source_type": "government_research_institute",
+      "trusted_for": ["official_research", "aquaculture_guidance"],
+      "homepage": null,
+      "notes": "Registry candidate only. Verify the source URL and document edition before assignment."
+    },
+    {
+      "source_id": "government_gazette_official",
+      "organization": "政府公報",
+      "source_tier": 1,
+      "source_type": "government_gazette",
+      "trusted_for": ["promulgated_regulations", "official_notices"],
+      "homepage": null,
+      "notes": "Registry candidate only. Verify the issuing authority and gazette issue metadata."
+    },
+    {
+      "source_id": "university_or_research",
+      "organization": null,
+      "source_tier": 2,
+      "source_type": "university_or_research",
+      "trusted_for": [],
+      "homepage": null,
+      "notes": "Category record; set organization and homepage on a verified institution-specific source record before use."
+    },
+    {
+      "source_id": "professional_industry",
+      "organization": null,
+      "source_tier": 3,
+      "source_type": "professional_industry",
+      "trusted_for": [],
+      "homepage": null,
+      "notes": "Category record; create an organization-specific entry and review evidence quality before assignment."
+    },
+    {
+      "source_id": "general_web",
+      "organization": null,
+      "source_tier": 4,
+      "source_type": "general_web",
+      "trusted_for": [],
+      "homepage": null,
+      "notes": "Category record for identified general web sources; unknown provenance remains unverified with a null tier."
+    }
+  ]
+}

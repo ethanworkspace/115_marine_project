@@ -1,0 +1,16 @@
+{
+  "benchmark_type": "silver",
+  "silver_dataset_version": "silver_questions_v1",
+  "evaluation_corpus_version": "evaluation-corpus-v1",
+  "shared_dataset_and_corpus_required_for_all_experiments": true,
+  "primary_mapping_statuses": ["exact", "high_confidence"],
+  "secondary_mapping_statuses": ["medium_confidence"],
+  "excluded_from_metrics": ["low_confidence", "unmapped"],
+  "experiments": [
+    {"experiment_id": "E1_bm25_silver_v1", "retriever": "bm25", "status": "executed"},
+    {"experiment_id": "E2_dense_silver_v1", "retriever": "dense", "status": "reserved_not_run"},
+    {"experiment_id": "E3_rrf_silver_v1", "retriever": "bm25+dense+rrf", "status": "reserved_not_run"},
+    {"experiment_id": "E4_rrf_reranker_silver_v1", "retriever": "bm25+dense+rrf+reranker", "status": "reserved_not_run"}
+  ],
+  "notes": "All experiments must use identical Silver and Evaluation Corpus checksums. AI-generated Silver references are not human Gold truth."
+}

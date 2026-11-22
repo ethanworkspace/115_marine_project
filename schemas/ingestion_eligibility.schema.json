@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Parser v2 ingestion eligibility metadata",
+  "type": "object",
+  "required": ["document_id", "ingestion_status", "review_reason", "reviewed_by", "reviewed_at"],
+  "properties": {
+    "document_id": {"type": "string", "minLength": 1},
+    "ingestion_status": {"enum": ["accepted", "accepted_with_warning", "review", "rejected"]},
+    "review_reason": {"type": "array", "items": {"type": "string"}},
+    "reviewed_by": {"type": ["string", "null"]},
+    "reviewed_at": {"type": ["string", "null"], "format": "date-time"},
+    "source_verified": {"type": "boolean"},
+    "verification_priority": {"type": "integer", "minimum": 1, "maximum": 4},
+    "page_status_counts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}
+  },
+  "additionalProperties": true
+}

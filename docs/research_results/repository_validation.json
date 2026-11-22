@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "scope": "Actual original local tests/ with required private fixtures and configured research environment; not a clean-public-clone claim.",
+  "passed": 607,
+  "subtests_passed": 8,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "junit_cases_including_subtests": 615,
+  "interpreter": "reports/evaluation/fish_test_corpus_v3_evidence_alignment_20261021_022237/test_env/Scripts/python.exe",
+  "environment": {
+    "python": "3.14.6 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:29:05) [MSC v.1942 64 bit (AMD64)]",
+    "packages": {
+      "pytest": "9.0.3",
+      "PyMuPDF": "1.28.2",
+      "python-docx": "1.2.0",
+      "jsonschema": "4.26.0",
+      "requests": "2.34.2",
+      "torch": "2.14.1+cu130",
+      "transformers": "5.18.0"
+    }
+  },
+  "command": "python -B -m pytest tests -q -p no:cacheprovider --basetemp <isolated-maintenance>/pytest_tmp --junitxml=<isolated-maintenance>/repository_pytest.xml",
+  "no_model_generation": true,
+  "no_production_environment_changes": true
+}

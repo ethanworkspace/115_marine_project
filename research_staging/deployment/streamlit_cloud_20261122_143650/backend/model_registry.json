@@ -1,0 +1,36 @@
+{
+  "version": "web-four-models-v1",
+  "default_model_id": "M2",
+  "models": {
+    "M1": {
+      "label": "M1 · DeepSeek R1 · Qwen 7B",
+      "tag": "deepseek-r1:7b",
+      "digest": "755ced02ce7befdb13b7ca74e1e4d08cddba4986afdb63a480f2c93d3140383f",
+      "family": "qwen2",
+      "quantization": "Q4_K_M"
+    },
+    "M2": {
+      "label": "M2 · Qwen2.5 Coder · 7B",
+      "tag": "qwen2.5-coder:7b",
+      "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+      "family": "qwen2",
+      "quantization": "Q4_K_M"
+    },
+    "M3": {
+      "label": "M3 · DeepSeek R1 · Llama 8B",
+      "tag": "hf.co/bartowski/DeepSeek-R1-Distill-Llama-8B-GGUF:Q4_K_M",
+      "digest": "aab87d0e8a585cc6260d3a448e3f66ff2057d1cd6975c834151deeb1eae94b42",
+      "family": "llama",
+      "quantization": "Q4_K_M"
+    },
+    "M4": {
+      "label": "M4 · Gemma 2 · 9B",
+      "tag": "gemma2:9b",
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "family": "gemma2",
+      "quantization": "Q4_0"
+    }
+  },
+  "source": "existing frozen v6 evaluation model alignment",
+  "ollama_tags_verified_at": "2026-11-22T16:23:39.389720"
+}

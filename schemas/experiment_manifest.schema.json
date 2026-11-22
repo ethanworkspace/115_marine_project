@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Retrieval Benchmark Experiment Manifest",
+  "type": "object",
+  "required": ["experiment_id", "timestamp", "evaluation_corpus_sha256", "gold_dataset_sha256", "retriever_type", "retriever_config", "chunking_version", "embedding_model", "embedding_dimension", "top_k", "git_commit", "notes"],
+  "properties": {
+    "experiment_id": {"type": "string", "minLength": 1},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "evaluation_corpus_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+    "gold_dataset_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+    "retriever_type": {"type": ["string", "null"]},
+    "retriever_config": {"type": ["object", "null"]},
+    "chunking_version": {"type": ["string", "null"]},
+    "embedding_model": {"type": ["string", "null"]},
+    "embedding_dimension": {"type": ["integer", "null"], "minimum": 1},
+    "top_k": {"type": ["integer", "null"], "minimum": 1},
+    "git_commit": {"type": ["string", "null"]},
+    "notes": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

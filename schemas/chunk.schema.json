@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Aquaculture RAG chunk metadata",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "chunk_id", "document_id", "parent_chunk_id", "species", "topic",
+    "disease", "chapter", "section", "page_start", "page_end",
+    "content_checksum", "extraction_confidence", "embedding_model",
+    "embedding_version", "embedding_dimension"
+  ],
+  "properties": {
+    "chunk_id": {"type": "string", "minLength": 1},
+    "document_id": {"type": "string", "format": "uuid"},
+    "parent_chunk_id": {"type": ["string", "null"]},
+    "species": {"type": "array", "items": {"type": "string"}},
+    "topic": {"type": "array", "items": {"type": "string"}},
+    "disease": {"type": "array", "items": {"type": "string"}},
+    "chapter": {"type": ["string", "null"]},
+    "section": {"type": ["string", "null"]},
+    "page_start": {"type": ["integer", "null"], "minimum": 1},
+    "page_end": {"type": ["integer", "null"], "minimum": 1},
+    "content_checksum": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "extraction_confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "embedding_model": {"type": ["string", "null"]},
+    "embedding_version": {"type": ["string", "null"]},
+    "embedding_dimension": {"type": ["integer", "null"], "minimum": 1}
+  }
+}

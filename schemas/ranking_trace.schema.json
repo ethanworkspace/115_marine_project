@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Retrieval Ranking Trace",
+  "type": "object",
+  "required": ["question_id", "query", "rank", "chunk_id", "document_id", "page", "raw_score", "normalized_score", "is_required_gold", "is_acceptable_gold", "chunk_match", "page_match", "document_match"],
+  "properties": {
+    "question_id": {"type": "string"},
+    "query": {"type": "string"},
+    "rank": {"type": "integer", "minimum": 1},
+    "chunk_id": {"type": "string"},
+    "document_id": {"type": "string"},
+    "page": {"type": ["integer", "null"], "minimum": 1},
+    "raw_score": {"type": ["number", "null"]},
+    "normalized_score": {"type": ["number", "null"]},
+    "is_required_gold": {"type": "boolean"},
+    "is_acceptable_gold": {"type": "boolean"},
+    "chunk_match": {"type": "boolean"},
+    "page_match": {"type": "boolean"},
+    "document_match": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

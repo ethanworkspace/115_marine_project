@@ -1,0 +1,1343 @@
+{
+  "run_id": "unified_rag_v6_evaluation_20261121_164940",
+  "scope": "EXPLORATORY_CURRENT_V6_REGRESSION_NOT_HUMAN_GOLD",
+  "human_gold_n": 0,
+  "target_n": 720,
+  "final_n": 720,
+  "raw_attempt_n": 723,
+  "questions": 180,
+  "models": {
+    "M1": {
+      "records": 180,
+      "api_completed": 180,
+      "api_failed": 0,
+      "raw_schema": {
+        "n": 180,
+        "success_n": 166,
+        "rate": 0.9222222222222223
+      },
+      "raw_citation": {
+        "n": 180,
+        "success_n": 80,
+        "rate": 0.4444444444444444
+      },
+      "raw_declared_status_counts": {
+        "ANSWERED_PARTIAL": 83,
+        "INSUFFICIENT_EVIDENCE": 90,
+        "NO_PARSEABLE_STATUS": 7
+      },
+      "system_status_counts": {
+        "ANSWERED_PARTIAL": 41,
+        "VALIDATION_FAILED": 102,
+        "INSUFFICIENT_EVIDENCE": 37
+      },
+      "origin_counts": {
+        "MODEL_GENERATED": 41,
+        "SYSTEM_GUIDANCE": 139
+      },
+      "model_validated_answer_rate": {
+        "n": 180,
+        "success_n": 41,
+        "rate": 0.22777777777777777
+      },
+      "model_declared_gap_rate": {
+        "n": 180,
+        "success_n": 90,
+        "rate": 0.5
+      },
+      "system_guidance_or_abstention_rate": {
+        "n": 180,
+        "success_n": 139,
+        "rate": 0.7722222222222223
+      },
+      "deterministic_extraction_rate": {
+        "n": 180,
+        "success_n": 0,
+        "rate": 0.0
+      },
+      "invalid_output_rate": {
+        "n": 180,
+        "success_n": 14,
+        "rate": 0.07777777777777778
+      },
+      "citation_validation_failure_rate": {
+        "n": 180,
+        "success_n": 86,
+        "rate": 0.4777777777777778
+      },
+      "raw_format_valid_n": 166,
+      "ttft_missing_n": 1,
+      "timing_memory": {
+        "ttft_seconds": {
+          "n": 179,
+          "mean": 7.674695207819332,
+          "median": 7.425949500058778,
+          "sd": 2.5497604111064764,
+          "minimum": 3.0821999999461696,
+          "maximum": 16.163461899966933
+        },
+        "first_thinking_seconds": {
+          "n": 180,
+          "mean": 1.0893228049972095,
+          "median": 1.0982243500184268,
+          "sd": 0.5069111354655484,
+          "minimum": 0.11095439991913736,
+          "maximum": 1.97742690006271
+        },
+        "tps": {
+          "n": 180,
+          "mean": 46.38093047937664,
+          "median": 46.34528968646341,
+          "sd": 1.7827635954833398,
+          "minimum": 42.91272239611266,
+          "maximum": 50.241362061933415
+        },
+        "wall_seconds": {
+          "n": 180,
+          "mean": 14.626834074999595,
+          "median": 13.270862499950454,
+          "sd": 6.698723120916305,
+          "minimum": 4.488685799995437,
+          "maximum": 37.17342409992125
+        },
+        "generated_tokens": {
+          "n": 180,
+          "mean": 622.4777777777778,
+          "median": 544.0,
+          "sd": 300.7503178607766,
+          "minimum": 209.0,
+          "maximum": 1536.0
+        },
+        "peak_system_ram_gib": {
+          "n": 180,
+          "mean": 25.457263692220053,
+          "median": 26.244014739990234,
+          "sd": 1.9898829652684915,
+          "minimum": 18.912246704101562,
+          "maximum": 26.992977142333984
+        },
+        "peak_dedicated_vram_gib": {
+          "n": 180,
+          "mean": 5.999869791666667,
+          "median": 5.9912109375,
+          "sd": 0.036904422915029315,
+          "minimum": 5.9443359375,
+          "maximum": 6.0927734375
+        }
+      },
+      "layers": {
+        "model": {
+          "faithfulness": {
+            "n": 82,
+            "mean": 0.9445693395102897,
+            "median": 0.9999999999999999,
+            "sd": 0.11435504495343325,
+            "minimum": 0.5,
+            "maximum": 1.0
+          },
+          "judge_answer_relevance": {
+            "n": 82,
+            "mean": 0.9501513415080745,
+            "median": 0.9999999999999999,
+            "sd": 0.10279941661831286,
+            "minimum": 0.2224100036621093,
+            "maximum": 1.0
+          },
+          "bge_m3_cosine": {
+            "n": 83,
+            "mean": 0.7277980123103222,
+            "median": 0.7726397100202937,
+            "sd": 0.1252291529524401,
+            "minimum": 0.2923785938113482,
+            "maximum": 0.9058658584827104
+          },
+          "logical_accuracy": {
+            "expected_n": 37,
+            "records": 37,
+            "correct_n": 13,
+            "incorrect_n": 6,
+            "not_evaluable_n": 18,
+            "conditional_n": 19,
+            "conditional_accuracy": 0.6842105263157895,
+            "fixed_content_success": {
+              "n": 37,
+              "success_n": 13,
+              "rate": 0.35135135135135137
+            },
+            "fixed_validated_success": {
+              "n": 37,
+              "success_n": 7,
+              "rate": 0.1891891891891892
+            },
+            "not_evaluable_reasons": {
+              "MODEL_DECLARED_INFORMATION_GAP": 17,
+              "RAW_JSON_UNPARSABLE_NO_SAFE_ANSWER_EXTRACTION": 1
+            }
+          },
+          "arithmetic_accuracy": {
+            "expected_n": 13,
+            "records": 13,
+            "correct_n": 5,
+            "incorrect_n": 1,
+            "not_evaluable_n": 7,
+            "conditional_n": 6,
+            "conditional_accuracy": 0.8333333333333334,
+            "fixed_content_success": {
+              "n": 13,
+              "success_n": 5,
+              "rate": 0.38461538461538464
+            },
+            "fixed_validated_success": {
+              "n": 13,
+              "success_n": 0,
+              "rate": 0.0
+            },
+            "not_evaluable_reasons": {
+              "NO_UNAMBIGUOUS_REQUESTED_RESULT": 2,
+              "MODEL_DECLARED_INFORMATION_GAP": 3,
+              "RAW_JSON_UNPARSABLE_NO_SAFE_ANSWER_EXTRACTION": 1,
+              "ONLY_INPUT_RATES_OR_REQUIRED_RESULT_UNIT_NOT_PRESENT": 1
+            }
+          },
+          "source_50_task_success": {
+            "n": 50,
+            "success_n": 7,
+            "rate": 0.14
+          },
+          "source_50_content_correct_rate": {
+            "n": 50,
+            "success_n": 18,
+            "rate": 0.36
+          }
+        },
+        "system": {
+          "faithfulness": {
+            "n": 41,
+            "mean": 0.9377557521913109,
+            "median": 0.9999999999999999,
+            "sd": 0.1253650524513397,
+            "minimum": 0.5,
+            "maximum": 1.0
+          },
+          "judge_answer_relevance": {
+            "n": 41,
+            "mean": 0.9383514635039538,
+            "median": 0.9999999999999999,
+            "sd": 0.13051091700203504,
+            "minimum": 0.2224100036621093,
+            "maximum": 1.0
+          },
+          "bge_m3_cosine": {
+            "n": 41,
+            "mean": 0.6869055920872537,
+            "median": 0.7370328975578515,
+            "sd": 0.14025022675604643,
+            "minimum": 0.2923785938113482,
+            "maximum": 0.851846294835242
+          },
+          "logical_accuracy": {
+            "expected_n": 37,
+            "records": 37,
+            "correct_n": 7,
+            "incorrect_n": 6,
+            "not_evaluable_n": 24,
+            "conditional_n": 13,
+            "conditional_accuracy": 0.5384615384615384,
+            "fixed_content_success": {
+              "n": 37,
+              "success_n": 7,
+              "rate": 0.1891891891891892
+            },
+            "fixed_validated_success": {
+              "n": 37,
+              "success_n": 7,
+              "rate": 0.1891891891891892
+            },
+            "not_evaluable_reasons": {
+              "SYSTEM_GUIDANCE_OR_FAILED_VALIDATION_NOT_PROFESSIONAL_ANSWER": 24
+            }
+          },
+          "arithmetic_accuracy": {
+            "expected_n": 13,
+            "records": 13,
+            "correct_n": 0,
+            "incorrect_n": 0,
+            "not_evaluable_n": 13,
+            "conditional_n": 0,
+            "conditional_accuracy": null,
+            "fixed_content_success": {
+              "n": 13,
+              "success_n": 0,
+              "rate": 0.0
+            },
+            "fixed_validated_success": {
+              "n": 13,
+              "success_n": 0,
+              "rate": 0.0
+            },
+            "not_evaluable_reasons": {
+              "SYSTEM_GUIDANCE_OR_FAILED_VALIDATION_NOT_PROFESSIONAL_ANSWER": 13
+            }
+          },
+          "source_50_task_success": {
+            "n": 50,
+            "success_n": 7,
+            "rate": 0.14
+          },
+          "source_50_content_correct_rate": {
+            "n": 50,
+            "success_n": 7,
+            "rate": 0.14
+          }
+        }
+      }
+    },
+    "M2": {
+      "records": 180,
+      "api_completed": 180,
+      "api_failed": 0,
+      "raw_schema": {
+        "n": 180,
+        "success_n": 179,
+        "rate": 0.9944444444444445
+      },
+      "raw_citation": {
+        "n": 180,
+        "success_n": 149,
+        "rate": 0.8277777777777777
+      },
+      "raw_declared_status_counts": {
+        "ANSWERED_PARTIAL": 118,
+        "INSUFFICIENT_EVIDENCE": 62
+      },
+      "system_status_counts": {
+        "ANSWERED_PARTIAL": 80,
+        "INSUFFICIENT_EVIDENCE": 62,
+        "VALIDATION_FAILED": 38
+      },
+      "origin_counts": {
+        "MODEL_GENERATED": 80,
+        "SYSTEM_GUIDANCE": 100
+      },
+      "model_validated_answer_rate": {
+        "n": 180,
+        "success_n": 80,
+        "rate": 0.4444444444444444
+      },
+      "model_declared_gap_rate": {
+        "n": 180,
+        "success_n": 62,
+        "rate": 0.34444444444444444
+      },
+      "system_guidance_or_abstention_rate": {
+        "n": 180,
+        "success_n": 100,
+        "rate": 0.5555555555555556
+      },
+      "deterministic_extraction_rate": {
+        "n": 180,
+        "success_n": 0,
+        "rate": 0.0
+      },
+      "invalid_output_rate": {
+        "n": 180,
+        "success_n": 1,
+        "rate": 0.005555555555555556
+      },
+      "citation_validation_failure_rate": {
+        "n": 180,
+        "success_n": 30,
+        "rate": 0.16666666666666666
+      },
+      "raw_format_valid_n": 179,
+      "ttft_missing_n": 0,
+      "timing_memory": {
+        "ttft_seconds": {
+          "n": 180,
+          "mean": 1.107699453337894,
+          "median": 1.0670481499982998,
+          "sd": 0.6254806591656706,
+          "minimum": 0.0917648000176996,
+          "maximum": 6.2861480000428855
+        },
+        "first_thinking_seconds": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "sd": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "tps": {
+          "n": 180,
+          "mean": 43.17705421762112,
+          "median": 43.1851075697343,
+          "sd": 2.2101152180645127,
+          "minimum": 31.733877654641233,
+          "maximum": 47.519228399540744
+        },
+        "wall_seconds": {
+          "n": 180,
+          "mean": 4.205552068335237,
+          "median": 3.7907613500137813,
+          "sd": 2.067046304682119,
+          "minimum": 1.2961524999700487,
+          "maximum": 13.29666150000412
+        },
+        "generated_tokens": {
+          "n": 180,
+          "mean": 130.82777777777778,
+          "median": 115.0,
+          "sd": 83.8510138291351,
+          "minimum": 50.0,
+          "maximum": 559.0
+        },
+        "peak_system_ram_gib": {
+          "n": 180,
+          "mean": 25.673905203077528,
+          "median": 26.705034255981445,
+          "sd": 2.2050038406156367,
+          "minimum": 18.72751235961914,
+          "maximum": 27.391700744628906
+        },
+        "peak_dedicated_vram_gib": {
+          "n": 180,
+          "mean": 5.978683810763889,
+          "median": 5.970703125,
+          "sd": 0.021351248883178704,
+          "minimum": 5.95703125,
+          "maximum": 6.0458984375
+        }
+      },
+      "layers": {
+        "model": {
+          "faithfulness": {
+            "n": 112,
+            "mean": 0.9094656953357515,
+            "median": 0.9999999999999998,
+            "sd": 0.18775272751740113,
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "judge_answer_relevance": {
+            "n": 112,
+            "mean": 0.9377097429547991,
+            "median": 0.9999999999999999,
+            "sd": 0.14667775987054726,
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "bge_m3_cosine": {
+            "n": 116,
+            "mean": 0.6888370359591722,
+            "median": 0.7535775302484726,
+            "sd": 0.19224367762845718,
+            "minimum": 0.21586369492566507,
+            "maximum": 0.9242522096637169
+          },
+          "logical_accuracy": {
+            "expected_n": 37,
+            "records": 37,
+            "correct_n": 15,
+            "incorrect_n": 13,
+            "not_evaluable_n": 9,
+            "conditional_n": 28,
+            "conditional_accuracy": 0.5357142857142857,
+            "fixed_content_success": {
+              "n": 37,
+              "success_n": 15,
+              "rate": 0.40540540540540543
+            },
+            "fixed_validated_success": {
+              "n": 37,
+              "success_n": 13,
+              "rate": 0.35135135135135137
+            },
+            "not_evaluable_reasons": {
+              "MODEL_DECLARED_INFORMATION_GAP": 6,
+              "The provided answer does not address the required conclusion and conditions specified in the frozen rubric. It does not mention the required action for water temperature below 15°C, which is to take emergency measures such as heating the water to prevent death. It also does not mention the prohibition of large-scale feeding, water changes, and disturbances during cold snaps.": 1,
+              "The answer does not address the required conclusion or conditions about the location and angle of the windbreak shed.": 1,
+              "QUESTION_ECHO": 1
+            }
+          },
+          "arithmetic_accuracy": {
+            "expected_n": 13,
+            "records": 13,
+            "correct_n": 4,
+            "incorrect_n": 7,
+            "not_evaluable_n": 2,
+            "conditional_n": 11,
+            "conditional_accuracy": 0.36363636363636365,
+            "fixed_content_success": {
+              "n": 13,
+              "success_n": 4,
+              "rate": 0.3076923076923077
+            },
+            "fixed_validated_success": {
+              "n": 13,
+              "success_n": 1,
+              "rate": 0.07692307692307693
+            },
+            "not_evaluable_reasons": {
+              "ONLY_INPUT_RATES_OR_REQUIRED_RESULT_UNIT_NOT_PRESENT": 1,
+              "MODEL_DECLARED_INFORMATION_GAP": 1
+            }
+          },
+          "source_50_task_success": {
+            "n": 50,
+            "success_n": 14,
+            "rate": 0.28
+          },
+          "source_50_content_correct_rate": {
+            "n": 50,
+            "success_n": 19,
+            "rate": 0.38
+          }
+        },
+        "system": {
+          "faithfulness": {
+            "n": 78,
+            "mean": 0.8988034188034187,
+            "median": 0.95,
+            "sd": 0.1809043933308407,
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "judge_answer_relevance": {
+            "n": 78,
+            "mean": 0.9342307692307692,
+            "median": 0.985,
+            "sd": 0.1330512959450127,
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "bge_m3_cosine": {
+            "n": 80,
+            "mean": 0.68191329079678,
+            "median": 0.7563422675534759,
+            "sd": 0.2018339720387326,
+            "minimum": 0.21586369492566507,
+            "maximum": 0.9242522096637169
+          },
+          "logical_accuracy": {
+            "expected_n": 37,
+            "records": 37,
+            "correct_n": 13,
+            "incorrect_n": 11,
+            "not_evaluable_n": 13,
+            "conditional_n": 24,
+            "conditional_accuracy": 0.5416666666666666,
+            "fixed_content_success": {
+              "n": 37,
+              "success_n": 13,
+              "rate": 0.35135135135135137
+            },
+            "fixed_validated_success": {
+              "n": 37,
+              "success_n": 13,
+              "rate": 0.35135135135135137
+            },
+            "not_evaluable_reasons": {
+              "SYSTEM_GUIDANCE_OR_FAILED_VALIDATION_NOT_PROFESSIONAL_ANSWER": 11,
+              "The provided answer does not address the required conclusion and conditions specified in the frozen rubric. It does not mention the required action for water temperature below 15°C, which is to take emergency measures such as heating the water to prevent death. It also does not mention the prohibition of large-scale feeding, water changes, and disturbances during cold snaps.": 1,
+              "The answer does not address the required conclusion or conditions about the location and angle of the windbreak shed.": 1
+            }
+          },
+          "arithmetic_accuracy": {
+            "expected_n": 13,
+            "records": 13,
+            "correct_n": 1,
+            "incorrect_n": 0,
+            "not_evaluable_n": 12,
+            "conditional_n": 1,
+            "conditional_accuracy": 1.0,
+            "fixed_content_success": {
+              "n": 13,
+              "success_n": 1,
+              "rate": 0.07692307692307693
+            },
+            "fixed_validated_success": {
+              "n": 13,
+              "success_n": 1,
+              "rate": 0.07692307692307693
+            },
+            "not_evaluable_reasons": {
+              "SYSTEM_GUIDANCE_OR_FAILED_VALIDATION_NOT_PROFESSIONAL_ANSWER": 12
+            }
+          },
+          "source_50_task_success": {
+            "n": 50,
+            "success_n": 14,
+            "rate": 0.28
+          },
+          "source_50_content_correct_rate": {
+            "n": 50,
+            "success_n": 14,
+            "rate": 0.28
+          }
+        }
+      }
+    },
+    "M3": {
+      "records": 180,
+      "api_completed": 180,
+      "api_failed": 0,
+      "raw_schema": {
+        "n": 180,
+        "success_n": 179,
+        "rate": 0.9944444444444445
+      },
+      "raw_citation": {
+        "n": 180,
+        "success_n": 131,
+        "rate": 0.7277777777777777
+      },
+      "raw_declared_status_counts": {
+        "ANSWERED_PARTIAL": 123,
+        "INSUFFICIENT_EVIDENCE": 57
+      },
+      "system_status_counts": {
+        "ANSWERED_PARTIAL": 75,
+        "VALIDATION_FAILED": 81,
+        "INSUFFICIENT_EVIDENCE": 24
+      },
+      "origin_counts": {
+        "MODEL_GENERATED": 75,
+        "SYSTEM_GUIDANCE": 105
+      },
+      "model_validated_answer_rate": {
+        "n": 180,
+        "success_n": 75,
+        "rate": 0.4166666666666667
+      },
+      "model_declared_gap_rate": {
+        "n": 180,
+        "success_n": 57,
+        "rate": 0.31666666666666665
+      },
+      "system_guidance_or_abstention_rate": {
+        "n": 180,
+        "success_n": 105,
+        "rate": 0.5833333333333334
+      },
+      "deterministic_extraction_rate": {
+        "n": 180,
+        "success_n": 0,
+        "rate": 0.0
+      },
+      "invalid_output_rate": {
+        "n": 180,
+        "success_n": 1,
+        "rate": 0.005555555555555556
+      },
+      "citation_validation_failure_rate": {
+        "n": 180,
+        "success_n": 48,
+        "rate": 0.26666666666666666
+      },
+      "raw_format_valid_n": 179,
+      "ttft_missing_n": 0,
+      "timing_memory": {
+        "ttft_seconds": {
+          "n": 180,
+          "mean": 1.2400681016669195,
+          "median": 1.231157850008458,
+          "sd": 0.714113725825055,
+          "minimum": 0.1002889999654144,
+          "maximum": 7.389450400019996
+        },
+        "first_thinking_seconds": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "sd": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "tps": {
+          "n": 180,
+          "mean": 44.161561361892595,
+          "median": 44.15010176557679,
+          "sd": 1.1336429029632664,
+          "minimum": 40.52052668580586,
+          "maximum": 46.49583499694578
+        },
+        "wall_seconds": {
+          "n": 180,
+          "mean": 6.3534238777821885,
+          "median": 6.052128700015601,
+          "sd": 2.8900905088149003,
+          "minimum": 1.87021880003158,
+          "maximum": 21.639898299938068
+        },
+        "generated_tokens": {
+          "n": 180,
+          "mean": 221.12777777777777,
+          "median": 199.5,
+          "sd": 110.64332097095182,
+          "minimum": 60.0,
+          "maximum": 856.0
+        },
+        "peak_system_ram_gib": {
+          "n": 180,
+          "mean": 25.87297388712565,
+          "median": 26.31311798095703,
+          "sd": 1.4915173402822715,
+          "minimum": 18.62981414794922,
+          "maximum": 26.57396697998047
+        },
+        "peak_dedicated_vram_gib": {
+          "n": 180,
+          "mean": 6.586789279513889,
+          "median": 6.576171875,
+          "sd": 0.016658758173161536,
+          "minimum": 6.5703125,
+          "maximum": 6.6142578125
+        }
+      },
+      "layers": {
+        "model": {
+          "faithfulness": {
+            "n": 94,
+            "mean": 0.782257659574468,
+            "median": 0.95,
+            "sd": 0.3371123912626924,
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "judge_answer_relevance": {
+            "n": 94,
+            "mean": 0.8144677201940658,
+            "median": 0.9999999999999998,
+            "sd": 0.3351928815683717,
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "bge_m3_cosine": {
+            "n": 95,
+            "mean": 0.6478145426206373,
+            "median": 0.6814547021622736,
+            "sd": 0.18489293916595495,
+            "minimum": 0.2394897392985593,
+            "maximum": 0.982145735560181
+          },
+          "logical_accuracy": {
+            "expected_n": 37,
+            "records": 37,
+            "correct_n": 17,
+            "incorrect_n": 5,
+            "not_evaluable_n": 15,
+            "conditional_n": 22,
+            "conditional_accuracy": 0.7727272727272727,
+            "fixed_content_success": {
+              "n": 37,
+              "success_n": 17,
+              "rate": 0.4594594594594595
+            },
+            "fixed_validated_success": {
+              "n": 37,
+              "success_n": 15,
+              "rate": 0.40540540540540543
+            },
+            "not_evaluable_reasons": {
+              "QUESTION_ECHO": 4,
+              "The provided answer does not contain a clear conclusion or conditions that can be reliably evaluated against the required conclusion and conditions in the rubric.": 1,
+              "The answer provided is 'INSUFFICIENT_EVIDENCE', indicating that the evidence provided is not sufficient to determine the required conclusion.": 1,
+              "The answer provided is 'INSUFFICIENT_EVIDENCE', which means the answer cannot be reliably interpreted or the reference applicability remains unresolved, making it not_evaluable according to the given rubric.": 1,
+              "UNANSWERED_INTERROGATIVE": 1,
+              "The provided sources do not contain sufficient information to reliably interpret or evaluate an answer to the given question.": 1,
+              "The answer provided is 'INSUFFICIENT_EVIDENCE', indicating that the evidence provided is not sufficient to determine if the condition for emergency measures is met. Therefore, the answer cannot be reliably interpreted or evaluated against the given rubric.": 1,
+              "MODEL_DECLARED_INFORMATION_GAP": 4,
+              "The answer does not provide the required comparison between the given salinity (4 psu) and the recommended salinity (5 psu or above) for goldfish. It also does not specify that this recommendation is not universally applicable to all goldfish species.": 1
+            }
+          },
+          "arithmetic_accuracy": {
+            "expected_n": 13,
+            "records": 13,
+            "correct_n": 1,
+            "incorrect_n": 2,
+            "not_evaluable_n": 10,
+            "conditional_n": 3,
+            "conditional_accuracy": 0.3333333333333333,
+            "fixed_content_success": {
+              "n": 13,
+              "success_n": 1,
+              "rate": 0.07692307692307693
+            },
+            "fixed_validated_success": {
+              "n": 13,
+              "success_n": 0,
+              "rate": 0.0
+            },
+            "not_evaluable_reasons": {
+              "QUESTION_ECHO": 4,
+              "NO_UNAMBIGUOUS_REQUESTED_RESULT": 1,
+              "ONLY_INPUT_RATES_OR_REQUIRED_RESULT_UNIT_NOT_PRESENT": 3,
+              "UNANSWERED_INTERROGATIVE": 1,
+              "MODEL_DECLARED_INFORMATION_GAP": 1
+            }
+          },
+          "source_50_task_success": {
+            "n": 50,
+            "success_n": 15,
+            "rate": 0.3
+          },
+          "source_50_content_correct_rate": {
+            "n": 50,
+            "success_n": 18,
+            "rate": 0.36
+          }
+        },
+        "system": {
+          "faithfulness": {
+            "n": 75,
+            "mean": 0.7510962666666666,
+            "median": 0.95,
+            "sd": 0.35094823806665576,
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "judge_answer_relevance": {
+            "n": 75,
+            "mean": 0.7863995426432292,
+            "median": 0.99,
+            "sd": 0.35312025324442836,
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "bge_m3_cosine": {
+            "n": 75,
+            "mean": 0.6244361181977136,
+            "median": 0.6642114749386993,
+            "sd": 0.18580371632707077,
+            "minimum": 0.2394897392985593,
+            "maximum": 0.982145735560181
+          },
+          "logical_accuracy": {
+            "expected_n": 37,
+            "records": 37,
+            "correct_n": 15,
+            "incorrect_n": 5,
+            "not_evaluable_n": 17,
+            "conditional_n": 20,
+            "conditional_accuracy": 0.75,
+            "fixed_content_success": {
+              "n": 37,
+              "success_n": 15,
+              "rate": 0.40540540540540543
+            },
+            "fixed_validated_success": {
+              "n": 37,
+              "success_n": 15,
+              "rate": 0.40540540540540543
+            },
+            "not_evaluable_reasons": {
+              "SYSTEM_GUIDANCE_OR_FAILED_VALIDATION_NOT_PROFESSIONAL_ANSWER": 11,
+              "The provided answer does not contain a clear conclusion or conditions that can be reliably evaluated against the required conclusion and conditions in the rubric.": 1,
+              "The answer provided is 'INSUFFICIENT_EVIDENCE', indicating that the evidence provided is not sufficient to determine the required conclusion.": 1,
+              "The answer provided is 'INSUFFICIENT_EVIDENCE', which means the answer cannot be reliably interpreted or the reference applicability remains unresolved, making it not_evaluable according to the given rubric.": 1,
+              "The provided sources do not contain sufficient information to reliably interpret or evaluate an answer to the given question.": 1,
+              "The answer provided is 'INSUFFICIENT_EVIDENCE', indicating that the evidence provided is not sufficient to determine if the condition for emergency measures is met. Therefore, the answer cannot be reliably interpreted or evaluated against the given rubric.": 1,
+              "The answer does not provide the required comparison between the given salinity (4 psu) and the recommended salinity (5 psu or above) for goldfish. It also does not specify that this recommendation is not universally applicable to all goldfish species.": 1
+            }
+          },
+          "arithmetic_accuracy": {
+            "expected_n": 13,
+            "records": 13,
+            "correct_n": 0,
+            "incorrect_n": 0,
+            "not_evaluable_n": 13,
+            "conditional_n": 0,
+            "conditional_accuracy": null,
+            "fixed_content_success": {
+              "n": 13,
+              "success_n": 0,
+              "rate": 0.0
+            },
+            "fixed_validated_success": {
+              "n": 13,
+              "success_n": 0,
+              "rate": 0.0
+            },
+            "not_evaluable_reasons": {
+              "SYSTEM_GUIDANCE_OR_FAILED_VALIDATION_NOT_PROFESSIONAL_ANSWER": 13
+            }
+          },
+          "source_50_task_success": {
+            "n": 50,
+            "success_n": 15,
+            "rate": 0.3
+          },
+          "source_50_content_correct_rate": {
+            "n": 50,
+            "success_n": 15,
+            "rate": 0.3
+          }
+        }
+      }
+    },
+    "M4": {
+      "records": 180,
+      "api_completed": 180,
+      "api_failed": 0,
+      "raw_schema": {
+        "n": 180,
+        "success_n": 180,
+        "rate": 1.0
+      },
+      "raw_citation": {
+        "n": 180,
+        "success_n": 134,
+        "rate": 0.7444444444444445
+      },
+      "raw_declared_status_counts": {
+        "ANSWERED_PARTIAL": 121,
+        "INSUFFICIENT_EVIDENCE": 59
+      },
+      "system_status_counts": {
+        "ANSWERED_PARTIAL": 80,
+        "INSUFFICIENT_EVIDENCE": 50,
+        "VALIDATION_FAILED": 50
+      },
+      "origin_counts": {
+        "MODEL_GENERATED": 80,
+        "SYSTEM_GUIDANCE": 100
+      },
+      "model_validated_answer_rate": {
+        "n": 180,
+        "success_n": 80,
+        "rate": 0.4444444444444444
+      },
+      "model_declared_gap_rate": {
+        "n": 180,
+        "success_n": 59,
+        "rate": 0.3277777777777778
+      },
+      "system_guidance_or_abstention_rate": {
+        "n": 180,
+        "success_n": 100,
+        "rate": 0.5555555555555556
+      },
+      "deterministic_extraction_rate": {
+        "n": 180,
+        "success_n": 0,
+        "rate": 0.0
+      },
+      "invalid_output_rate": {
+        "n": 180,
+        "success_n": 0,
+        "rate": 0.0
+      },
+      "citation_validation_failure_rate": {
+        "n": 180,
+        "success_n": 46,
+        "rate": 0.25555555555555554
+      },
+      "raw_format_valid_n": 180,
+      "ttft_missing_n": 0,
+      "timing_memory": {
+        "ttft_seconds": {
+          "n": 180,
+          "mean": 2.784224612216672,
+          "median": 2.839928150002379,
+          "sd": 1.009279612212621,
+          "minimum": 0.5380742999259382,
+          "maximum": 4.931043999968097
+        },
+        "first_thinking_seconds": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "sd": null,
+          "minimum": null,
+          "maximum": null
+        },
+        "tps": {
+          "n": 180,
+          "mean": 9.260890637507252,
+          "median": 8.926184541762135,
+          "sd": 1.4478027707531247,
+          "minimum": 7.616815220259152,
+          "maximum": 13.153581214257672
+        },
+        "wall_seconds": {
+          "n": 180,
+          "mean": 27.06046235944248,
+          "median": 21.867049550055526,
+          "sd": 20.626489671071674,
+          "minimum": 5.493411000003107,
+          "maximum": 145.61929860000964
+        },
+        "generated_tokens": {
+          "n": 180,
+          "mean": 211.1888888888889,
+          "median": 161.0,
+          "sd": 158.9419200653679,
+          "minimum": 60.0,
+          "maximum": 1070.0
+        },
+        "peak_system_ram_gib": {
+          "n": 180,
+          "mean": 26.260866101582845,
+          "median": 26.432674407958984,
+          "sd": 0.9470373280651588,
+          "minimum": 21.007858276367188,
+          "maximum": 28.614978790283203
+        },
+        "peak_dedicated_vram_gib": {
+          "n": 180,
+          "mean": 7.218793402777778,
+          "median": 7.24609375,
+          "sd": 0.06129781100839333,
+          "minimum": 7.0869140625,
+          "maximum": 7.2763671875
+        }
+      },
+      "layers": {
+        "model": {
+          "faithfulness": {
+            "n": 119,
+            "mean": 0.9085072829131653,
+            "median": 0.9999999999999998,
+            "sd": 0.16765682324216538,
+            "minimum": 0.3333,
+            "maximum": 1.0
+          },
+          "judge_answer_relevance": {
+            "n": 119,
+            "mean": 0.9373588235294118,
+            "median": 1.0,
+            "sd": 0.11082677612868995,
+            "minimum": 0.5,
+            "maximum": 1.0
+          },
+          "bge_m3_cosine": {
+            "n": 121,
+            "mean": 0.7261076761371903,
+            "median": 0.7720206871413071,
+            "sd": 0.14868027468146378,
+            "minimum": 0.22710808590123893,
+            "maximum": 0.9199799642740222
+          },
+          "logical_accuracy": {
+            "expected_n": 37,
+            "records": 37,
+            "correct_n": 15,
+            "incorrect_n": 14,
+            "not_evaluable_n": 8,
+            "conditional_n": 29,
+            "conditional_accuracy": 0.5172413793103449,
+            "fixed_content_success": {
+              "n": 37,
+              "success_n": 15,
+              "rate": 0.40540540540540543
+            },
+            "fixed_validated_success": {
+              "n": 37,
+              "success_n": 12,
+              "rate": 0.32432432432432434
+            },
+            "not_evaluable_reasons": {
+              "MODEL_DECLARED_INFORMATION_GAP": 5,
+              "JUDGE_ERROR": 1,
+              "The answer does not provide a specific angle condition for the roof, making it impossible to evaluate against the required conditions.": 1,
+              "只描述低溫與攝食下降，未給凍結必要的水黴風險，並逕稱正常生理反應；完整必答結論未形成。保守列不可完整判定，固定任務仍不成功，不把不完整直接等同數值錯誤。": 1
+            }
+          },
+          "arithmetic_accuracy": {
+            "expected_n": 13,
+            "records": 13,
+            "correct_n": 9,
+            "incorrect_n": 2,
+            "not_evaluable_n": 2,
+            "conditional_n": 11,
+            "conditional_accuracy": 0.8181818181818182,
+            "fixed_content_success": {
+              "n": 13,
+              "success_n": 9,
+              "rate": 0.6923076923076923
+            },
+            "fixed_validated_success": {
+              "n": 13,
+              "success_n": 1,
+              "rate": 0.07692307692307693
+            },
+            "not_evaluable_reasons": {
+              "NO_UNAMBIGUOUS_REQUESTED_RESULT": 1,
+              "ONLY_INPUT_RATES_OR_REQUIRED_RESULT_UNIT_NOT_PRESENT": 1
+            }
+          },
+          "source_50_task_success": {
+            "n": 50,
+            "success_n": 13,
+            "rate": 0.26
+          },
+          "source_50_content_correct_rate": {
+            "n": 50,
+            "success_n": 24,
+            "rate": 0.48
+          }
+        },
+        "system": {
+          "faithfulness": {
+            "n": 80,
+            "mean": 0.8808208333333333,
+            "median": 0.95,
+            "sd": 0.18794006551114087,
+            "minimum": 0.3333,
+            "maximum": 1.0
+          },
+          "judge_answer_relevance": {
+            "n": 80,
+            "mean": 0.92207125,
+            "median": 0.9744999999999999,
+            "sd": 0.11934731169383038,
+            "minimum": 0.5,
+            "maximum": 1.0
+          },
+          "bge_m3_cosine": {
+            "n": 80,
+            "mean": 0.7154614827069419,
+            "median": 0.7564263180972157,
+            "sd": 0.1568388661824743,
+            "minimum": 0.22710808590123893,
+            "maximum": 0.9199799642740222
+          },
+          "logical_accuracy": {
+            "expected_n": 37,
+            "records": 37,
+            "correct_n": 12,
+            "incorrect_n": 12,
+            "not_evaluable_n": 13,
+            "conditional_n": 24,
+            "conditional_accuracy": 0.5,
+            "fixed_content_success": {
+              "n": 37,
+              "success_n": 12,
+              "rate": 0.32432432432432434
+            },
+            "fixed_validated_success": {
+              "n": 37,
+              "success_n": 12,
+              "rate": 0.32432432432432434
+            },
+            "not_evaluable_reasons": {
+              "SYSTEM_GUIDANCE_OR_FAILED_VALIDATION_NOT_PROFESSIONAL_ANSWER": 10,
+              "JUDGE_ERROR": 1,
+              "The answer does not provide a specific angle condition for the roof, making it impossible to evaluate against the required conditions.": 1,
+              "只描述低溫與攝食下降，未給凍結必要的水黴風險，並逕稱正常生理反應；完整必答結論未形成。保守列不可完整判定，固定任務仍不成功，不把不完整直接等同數值錯誤。": 1
+            }
+          },
+          "arithmetic_accuracy": {
+            "expected_n": 13,
+            "records": 13,
+            "correct_n": 1,
+            "incorrect_n": 0,
+            "not_evaluable_n": 12,
+            "conditional_n": 1,
+            "conditional_accuracy": 1.0,
+            "fixed_content_success": {
+              "n": 13,
+              "success_n": 1,
+              "rate": 0.07692307692307693
+            },
+            "fixed_validated_success": {
+              "n": 13,
+              "success_n": 1,
+              "rate": 0.07692307692307693
+            },
+            "not_evaluable_reasons": {
+              "SYSTEM_GUIDANCE_OR_FAILED_VALIDATION_NOT_PROFESSIONAL_ANSWER": 12
+            }
+          },
+          "source_50_task_success": {
+            "n": 50,
+            "success_n": 13,
+            "rate": 0.26
+          },
+          "source_50_content_correct_rate": {
+            "n": 50,
+            "success_n": 13,
+            "rate": 0.26
+          }
+        }
+      }
+    }
+  },
+  "shared_context_precision": {
+    "metric": "AI_ASSISTED_CONTEXT_PRECISION_AT_5",
+    "formula": "relevant_count / 5, only complete five binary reviewed labels",
+    "n_questions": 12,
+    "n_reviewed_chunks": 60,
+    "mean": 0.35000000000000003,
+    "label_counts": {
+      "1": 21,
+      "0": 39
+    },
+    "support_labels": {
+      "PARTIAL_SUPPORT": 6,
+      "TOPICAL_ONLY": 19,
+      "CONDITION_MISMATCH": 10,
+      "IRRELEVANT": 5,
+      "FULL_SUPPORT": 15,
+      "SOURCE_SCOPE_MISMATCH": 2,
+      "SPECIES_MISMATCH": 3
+    },
+    "by_species": {
+      "虱目魚": {
+        "n": 2,
+        "mean": 0.1
+      },
+      "鱸魚": {
+        "n": 2,
+        "mean": 0.6
+      },
+      "石斑魚": {
+        "n": 2,
+        "mean": 0.5
+      },
+      "烏魚": {
+        "n": 2,
+        "mean": 0.4
+      },
+      "鰻魚": {
+        "n": 2,
+        "mean": 0.4
+      },
+      "吳郭魚": {
+        "n": 2,
+        "mean": 0.1
+      }
+    },
+    "unverified_returned_chunks": 836,
+    "not_human_gold": true,
+    "not_an_estimate_of_all_180_questions": true,
+    "not_ai_classification_precision_or_recall": true,
+    "no_generator_answers_used": true,
+    "same_contexts_as_actual_720_run": true
+  },
+  "fixed_reference_policy": {
+    "version": "v6-fixed-reference-denominator-20261121",
+    "source_question_ids": [
+      "FT-tilapia-Q09",
+      "FT-tilapia-Q10",
+      "FT-tilapia-Q12",
+      "FT-tilapia-Q13",
+      "FT-tilapia-Q16",
+      "FT-tilapia-Q17",
+      "FT-tilapia-Q25",
+      "FT-tilapia-Q26",
+      "FT-mullet-Q01",
+      "FT-mullet-Q02",
+      "FT-mullet-Q03",
+      "FT-mullet-Q04",
+      "FT-mullet-Q11",
+      "FT-mullet-Q12",
+      "FT-mullet-Q17",
+      "FT-mullet-Q19",
+      "FT-mullet-Q20",
+      "FT-mullet-Q21",
+      "FT-mullet-Q22",
+      "FT-mullet-Q23",
+      "FT-grouper-Q09",
+      "FT-grouper-Q12",
+      "FT-grouper-Q15",
+      "FT-grouper-Q16",
+      "FT-milkfish-Q01",
+      "FT-milkfish-Q02",
+      "FT-milkfish-Q03",
+      "FT-milkfish-Q04",
+      "FT-milkfish-Q05",
+      "FT-milkfish-Q06",
+      "FT-milkfish-Q11",
+      "FT-milkfish-Q12",
+      "FT-milkfish-Q19",
+      "FT-milkfish-Q20",
+      "FT-milkfish-Q21",
+      "FT-milkfish-Q22",
+      "FT-eel-Q03",
+      "FT-eel-Q05",
+      "FT-eel-Q13",
+      "FT-eel-Q26",
+      "FT-seabass-Q01",
+      "FT-seabass-Q02",
+      "FT-seabass-Q03",
+      "FT-seabass-Q08",
+      "FT-seabass-Q11",
+      "FT-seabass-Q14",
+      "FT-seabass-Q19",
+      "FT-seabass-Q20",
+      "FT-seabass-Q24",
+      "FT-seabass-Q25"
+    ],
+    "logical_question_ids": [
+      "FT-tilapia-Q09",
+      "FT-tilapia-Q10",
+      "FT-tilapia-Q12",
+      "FT-tilapia-Q13",
+      "FT-tilapia-Q16",
+      "FT-tilapia-Q17",
+      "FT-tilapia-Q26",
+      "FT-mullet-Q01",
+      "FT-mullet-Q02",
+      "FT-mullet-Q03",
+      "FT-mullet-Q04",
+      "FT-mullet-Q11",
+      "FT-mullet-Q12",
+      "FT-mullet-Q17",
+      "FT-grouper-Q09",
+      "FT-grouper-Q12",
+      "FT-grouper-Q15",
+      "FT-grouper-Q16",
+      "FT-milkfish-Q01",
+      "FT-milkfish-Q02",
+      "FT-milkfish-Q03",
+      "FT-milkfish-Q04",
+      "FT-milkfish-Q05",
+      "FT-milkfish-Q06",
+      "FT-milkfish-Q11",
+      "FT-milkfish-Q12",
+      "FT-milkfish-Q21",
+      "FT-milkfish-Q22",
+      "FT-eel-Q03",
+      "FT-eel-Q05",
+      "FT-eel-Q13",
+      "FT-seabass-Q01",
+      "FT-seabass-Q02",
+      "FT-seabass-Q03",
+      "FT-seabass-Q08",
+      "FT-seabass-Q11",
+      "FT-seabass-Q14"
+    ],
+    "arithmetic_question_ids": [
+      "FT-tilapia-Q25",
+      "FT-mullet-Q19",
+      "FT-mullet-Q20",
+      "FT-mullet-Q21",
+      "FT-mullet-Q22",
+      "FT-mullet-Q23",
+      "FT-milkfish-Q19",
+      "FT-milkfish-Q20",
+      "FT-eel-Q26",
+      "FT-seabass-Q19",
+      "FT-seabass-Q20",
+      "FT-seabass-Q24",
+      "FT-seabass-Q25"
+    ],
+    "fixed_source_n": 50,
+    "fixed_logical_n": 37,
+    "fixed_arithmetic_n": 13,
+    "all_question_n": 180,
+    "conditional_accuracy": "Correct / (correct + incorrect) only among interpretable answers with qualified frozen references; not_evaluable remains N/A",
+    "fixed_task_success": "Reference-correct complete observable content AND raw schema/citation/source checks / fixed eligible question set; refusal/incomplete/invalid count not successful",
+    "partial_status_not_automatically_complete_or_wrong": "Completeness judged against frozen required elements, not answer_status alone",
+    "system_guidance_not_professional_answer": true,
+    "no_extraction_credit_to_model": true,
+    "no_total_score": true,
+    "human_gold": 0
+  },
+  "memory_scope": "Mean of per-request system_level_sampled_peak, GiB, not model_process_peak",
+  "shared_gpu_memory": "N/A, no trustworthy measurement source",
+  "source_file": "reports/evaluation/unified_rag_v6_evaluation_20261121_164940/evaluation_metrics_11_source_qc.json",
+  "source_sha256": "a786dc1a856914b3bbfa72b702557373070d66221b93917cf67be27e3c507d06"
+}

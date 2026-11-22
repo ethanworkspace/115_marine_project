@@ -1,0 +1,12 @@
+{
+  "allow_execution": false,
+  "status": "definitions_only",
+  "experiments": [
+    {"experiment_id": "E0_production_baseline", "status": "reserved_not_run"},
+    {"experiment_id": "E1_bm25_v2", "status": "reserved_not_run"},
+    {"experiment_id": "E2_dense_v2", "status": "reserved_not_run"},
+    {"experiment_id": "E3_rrf_v2", "status": "reserved_not_run"},
+    {"experiment_id": "E4_rrf_reranker_v2", "status": "reserved_not_run"}
+  ],
+  "note": "Phase 8.6 only defines experiment identifiers. No index, retriever or benchmark is executed."
+}

@@ -1,0 +1,100 @@
+{
+  "version": "marine-unified-v6-20261121_160441",
+  "database_sha256": "275e476dc90d3031eb39bb1a38e64aa652fec2bfdc0de706f8acea98d0089ec6",
+  "counts": {
+    "documents": 98,
+    "document_files": 200,
+    "document_pages": 1278,
+    "document_elements": 33759,
+    "element_chunks": 5822,
+    "media_assets": 6637,
+    "image_embeddings": 6637,
+    "sources": 100,
+    "source_records": 35573,
+    "chunks": 24283,
+    "archive_units": 55100,
+    "semantic_archive_fts": 55100,
+    "embedding_cache": 40263,
+    "media_files": 5670,
+    "catalog_documents": 98,
+    "catalog_assets": 6637,
+    "retrieval_eligible": 13794,
+    "context_only": 10489,
+    "distinct_text_vectors_used": 35137,
+    "my_data_paths": 151,
+    "all_documents_with_vectors": 98,
+    "semantic_boundary_decisions": 4434,
+    "element_kinds": {
+      "HTML_TEXT": 1,
+      "IMAGE": 6851,
+      "LAW_METADATA": 12,
+      "LEGACY_IMAGE": 5670,
+      "PAGE_RENDER": 1278,
+      "PARAGRAPH": 19255,
+      "SCAN_OCR": 206,
+      "TABLE": 486
+    },
+    "ocr_status": {
+      "NOT_RUN": 1734,
+      "OK": 4299,
+      "TOO_SMALL_FOR_RELIABLE_OCR": 604
+    },
+    "document_rights_status": {
+      "EXISTING_ADMITTED_STRUCTURED_RECORD_SCOPE": 4,
+      "OFFICIAL_STATUTORY_SNAPSHOT_ART9": 32,
+      "OGL_V1_EXACT_OFFICIAL_RESOURCE_EXCEPTION_SCREENED": 4,
+      "PRIOR_APPROVED_NATIVE_FIELDS_SCOPE_ONLY": 5,
+      "STATUTORY_TEXT_ART9_HISTORICAL_SNAPSHOT": 9,
+      "USER_ATTESTED_LOCAL_RESEARCH_FULLTEXT": 44
+    },
+    "parse_status": {
+      "PARSED": 98
+    },
+    "segmentation_quality": {
+      "NATIVE_CAPTION_NOT_EXPERT_VISUAL_INTERPRETATION": 408,
+      "NATIVE_TEXT_LAYOUT_BOUND": 2752,
+      "OCR_ONLY_REQUIRES_REVIEW": 2163,
+      "OVERSIZE_UNIT_REVIEW": 4,
+      "TABLE_MULTIROW_HEADER_REQUIRES_REVIEW": 10,
+      "TABLE_NATIVE_CELLS_WITH_BLANKS_NOT_INFERRED": 327,
+      "TABLE_STRUCTURE_CHECKED_NOT_EXPERT_VALIDATED": 158
+    }
+  },
+  "model_registry": {
+    "version": "web-four-models-v1",
+    "default_model_id": "M2",
+    "models": {
+      "M1": {
+        "label": "M1 · DeepSeek R1 · Qwen 7B",
+        "tag": "deepseek-r1:7b",
+        "digest": "755ced02ce7befdb13b7ca74e1e4d08cddba4986afdb63a480f2c93d3140383f",
+        "family": "qwen2",
+        "quantization": "Q4_K_M"
+      },
+      "M2": {
+        "label": "M2 · Qwen2.5 Coder · 7B",
+        "tag": "qwen2.5-coder:7b",
+        "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+        "family": "qwen2",
+        "quantization": "Q4_K_M"
+      },
+      "M3": {
+        "label": "M3 · DeepSeek R1 · Llama 8B",
+        "tag": "hf.co/bartowski/DeepSeek-R1-Distill-Llama-8B-GGUF:Q4_K_M",
+        "digest": "aab87d0e8a585cc6260d3a448e3f66ff2057d1cd6975c834151deeb1eae94b42",
+        "family": "llama",
+        "quantization": "Q4_K_M"
+      },
+      "M4": {
+        "label": "M4 · Gemma 2 · 9B",
+        "tag": "gemma2:9b",
+        "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+        "family": "gemma2",
+        "quantization": "Q4_0"
+      }
+    },
+    "source": "existing frozen v6 evaluation model alignment",
+    "ollama_tags_verified_at": "2026-11-22T16:23:39.389720"
+  },
+  "not_public_redistribution_of_originals": true
+}

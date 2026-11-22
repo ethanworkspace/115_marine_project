@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OCR gold sample candidate requiring human confirmation",
+  "type": "object",
+  "required": ["document_id", "page_number", "suggested_stratum", "selection_basis", "human_confirmation_required", "ground_truth_text"],
+  "properties": {
+    "document_id": {"type": "string", "minLength": 1},
+    "page_number": {"type": "integer", "minimum": 1},
+    "title": {"type": ["string", "null"]},
+    "file_path": {"type": ["string", "null"]},
+    "file_checksum": {"type": ["string", "null"], "pattern": "^[0-9a-fA-F]{64}$"},
+    "suggested_stratum": {"enum": ["normal_text", "table", "numbers", "units", "species", "disease", "regulation", "ocr_candidate"]},
+    "selection_basis": {"type": "string"},
+    "human_confirmation_required": {"const": true},
+    "ground_truth_text": {"type": "null"}
+  },
+  "additionalProperties": false
+}

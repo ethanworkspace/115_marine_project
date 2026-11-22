@@ -1,0 +1,10 @@
+{
+  "chunk_version": "2.0.0-shadow",
+  "target_size": 900,
+  "max_size": 1200,
+  "minimum_size": 180,
+  "overlap": 90,
+  "table_row_group_size": 12,
+  "near_duplicate_similarity": 0.94,
+  "notes": "Configuration applies only to fallback or in-structure child splitting in the experimental shadow pipeline."
+}

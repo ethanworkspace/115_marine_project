@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Human-authored OCR gold sample record",
+  "type": "object",
+  "required": ["document_id", "page_number", "ground_truth_text", "important_terms", "important_numbers", "important_units"],
+  "properties": {
+    "document_id": {"type": "string", "minLength": 1},
+    "page_number": {"type": "integer", "minimum": 1},
+    "ground_truth_text": {"type": "string"},
+    "important_terms": {"type": "array", "items": {"type": "string"}},
+    "important_numbers": {"type": "array", "items": {"type": "string"}},
+    "important_units": {"type": "array", "items": {"type": "string"}},
+    "reviewed_by": {"type": ["string", "null"]},
+    "reviewed_at": {"type": ["string", "null"], "format": "date-time"}
+  },
+  "additionalProperties": false
+}

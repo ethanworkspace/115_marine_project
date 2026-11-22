@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "faithfulness": {"type": "number", "minimum": 0, "maximum": 1},
+    "answer_relevancy": {"type": "number", "minimum": 0, "maximum": 1},
+    "silver_reference_correctness": {"type": "number", "minimum": 0, "maximum": 1}
+  },
+  "required": ["faithfulness", "answer_relevancy", "silver_reference_correctness"],
+  "additionalProperties": false
+}

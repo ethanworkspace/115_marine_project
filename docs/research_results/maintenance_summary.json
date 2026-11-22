@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-22",
+  "deleted_files": 729,
+  "released_bytes": 34269771,
+  "deletion_reason_counts": {
+    "REGENERABLE_CODE_OR_PYTEST_CACHE": 725,
+    "CONFIRMED_TRUNCATED_ZIP_NOT_INGESTED": 4
+  },
+  "unreadable_cache_directories_preserved": 2,
+  "originals_results_models_and_environments_preserved": true,
+  "protected_manifest_unchanged": 636,
+  "production_sqlite_sha256": "d7d06d4d2a57d0a57d05bcb6131ffb24aefb226c6bd36349dbc5118d33b11087",
+  "local_receipt_sha256": "f4fd0530810b99fe9d140bb68525943226e1ad8350db35df859bbd6ef38e1225"
+}

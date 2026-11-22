@@ -1,0 +1,16 @@
+{
+  "status": "framework_only",
+  "categories": [
+    "no_relevant_retrieved",
+    "relevant_below_k",
+    "wrong_document",
+    "correct_document_wrong_page",
+    "correct_page_wrong_chunk",
+    "duplicate_competition",
+    "metadata_filter_error",
+    "query_term_mismatch",
+    "multi_document_partial",
+    "unknown"
+  ],
+  "note": "No question is assigned an error category until retrieval results are collected in a future phase."
+}

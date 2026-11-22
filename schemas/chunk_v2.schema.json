@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ragv2:schemas:chunk-v2",
+  "title": "RAG v2 shadow ChunkRecord",
+  "type": "object",
+  "required": [
+    "chunk_id", "document_id", "parent_chunk_id", "chunk_type", "chunk_strategy",
+    "chunk_version", "text", "species", "topic", "disease", "chapter", "section",
+    "article", "page_start", "page_end", "source_span_ids", "parser_name",
+    "parser_version", "extraction_method", "extraction_confidence", "ingestion_status",
+    "source_verified", "legal_status", "chunkable", "indexable", "content_checksum"
+  ],
+  "properties": {
+    "chunk_id": {"type": "string", "minLength": 1},
+    "document_id": {"type": "string", "minLength": 1},
+    "parent_chunk_id": {"type": ["string", "null"]},
+    "chunk_type": {"enum": ["parent", "child"]},
+    "chunk_strategy": {"enum": ["regulation", "manual", "disease", "table", "fallback"]},
+    "chunk_version": {"type": "string", "minLength": 1},
+    "text": {"type": "string", "minLength": 1},
+    "species": {"type": ["string", "null"]},
+    "topic": {"type": ["string", "null"]},
+    "disease": {"type": ["string", "null"]},
+    "chapter": {"type": ["string", "null"]},
+    "section": {"type": ["string", "null"]},
+    "article": {"type": ["string", "null"]},
+    "page_start": {"type": "integer", "minimum": 1},
+    "page_end": {"type": "integer", "minimum": 1},
+    "source_span_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "parser_name": {"type": "string"},
+    "parser_version": {"type": "string"},
+    "extraction_method": {"type": "string"},
+    "extraction_confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "ingestion_status": {"enum": ["accepted", "accepted_with_warning"]},
+    "source_verified": {"type": "boolean"},
+    "legal_status": {"enum": ["current", "superseded", "repealed", "historical", "draft", "unknown"]},
+    "chunkable": {"type": "boolean"},
+    "indexable": {"type": "boolean"},
+    "content_checksum": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "table_data": {"type": ["object", "null"]}
+  },
+  "allOf": [
+    {"if": {"properties": {"chunk_type": {"const": "child"}}}, "then": {"properties": {"parent_chunk_id": {"type": "string", "minLength": 1}}}},
+    {"if": {"properties": {"indexable": {"const": true}}}, "then": {"properties": {"chunkable": {"const": true}, "source_verified": {"const": true}}}}
+  ],
+  "additionalProperties": false
+}

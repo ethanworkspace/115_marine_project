@@ -4,3 +4,50 @@ rag_store.sqlite3
 *.log
 my_data/
 rag_assets/
+
+# Regenerable caches and isolated environments
+.venv*/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+**/.pytest_cache/
+pytest-cache-files-*/
+**/node_modules/
+**/site-packages/
+**/test_env/
+**/frontend_env/
+**/vendor/
+
+# Private credentials and local service state
+**/.private/
+.env
+.env.*
+!.env.example
+**/secrets.toml
+**/credentials.json
+**/owner_access_code.txt
+**/state/
+**/github_checkout/
+**/github_main_checkout/
+
+# Local original data, research outputs, indexes and model weights
+/data/
+/fish test/
+/reports/
+/research_staging/
+*.sqlite3
+*.sqlite3-*
+*.sqlite
+*.db
+*.gguf
+*.safetensors
+*.bin
+*.part
+*.crdownload
+*.incomplete*
+*.partial_timeout_*
+/*.pdf
+/*.png
+
+# Historical/runtime source snapshots are published by an explicit scanned
+# allowlist. Never force-add their neighboring original data or state folders.

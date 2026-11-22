@@ -1,203 +1,120 @@
-# 台灣漁業 Hybrid-RAG 向量知識庫
+# Aquaculture Knowledge Platform｜養殖漁業知識平台
 
-本地端漁業知識問答系統，整合 **BGE-M3 語意向量**與 **BM25 關鍵字精準匹配**，完全在本機運行，不上傳任何資料。
+臺灣水產養殖 Hybrid-RAG 知識問答與四模型評測專案，涵蓋虱目魚、吳郭魚、石斑魚、鱸魚、烏魚及鰻魚。
 
----
+網站：**https://aquaculture-knowledge-platform.streamlit.app/**（需工作區存取碼）。更新日期：2026-11-22。
 
-## 系統架構
+## 現行系統
 
+- 自由問答、180 題問題瀏覽、小知識卡片與問答紀錄。
+- M1–M4 四模型切換，預設 **M2**，逐次核對模型 digest。
+- BM25 / SQLite FTS5、BGE-M3 Dense、RRF k=60、BGE Reranker v2-m3。
+- 來源、魚種、證據、JSON 與引用檢查；缺少證據時明確說明資訊缺口。
+- 區分模型生成、確定性摘取、拒答及驗證失敗，不把系統回補算成模型直接作答成功。
+
+```text
+本機原始文件 / 官方資料快照
+ → Parser / OCR / 表格處理 / 語義切分 / 來源定位
+ → 隔離 SQLite / FTS5 / BGE-M3 向量與圖像索引
+ → Hybrid Retrieval / RRF / Reranker / 來源與魚種檢查
+ → 本機 Ollama / 回答引擎 / JSON 與引用驗證
+ → Streamlit 雲端介面
 ```
-my_data/          ← 原始文件（PDF / DOCX / DOC / ODT）
-    ↓
-rag_core.py       ← 清洗 → 切塊 → 嵌入 → SQLite 向量庫
-    ↓
-rag_store.sqlite3 ← 向量索引（chunks + FTS5 全文搜尋）
-    ↓
-app.py            ← Streamlit 問答介面
-```
 
-### Hybrid-RAG 檢索流程
+現用隔離知識庫是 `marine-unified-v6-20261121_160441`。根目錄 `app.py`、`rag_core.py` 與 `rag_store.sqlite3` 為保留的舊版入口及正式基線，不代表目前網站使用的版本。
 
-| 步驟 | 技術 | 說明 |
-|------|------|------|
-| 語意向量 | BGE-M3（`bge-m3:latest`） | 支援繁中 + 多語 + 8192 token 長文 |
-| 關鍵字搜尋 | SQLite FTS5 + BM25 | Unigram + Bigram + Trigram，專業術語高召回 |
-| 分數融合 | 動態 RRF 加權 | 含專有名詞時 BM25 權重提升至 58% |
-| Metadata 過濾 | 後過濾 | 依魚種、文件類型、病害精準限縮 |
+模型、來源原件、資料庫、筆記與問答服務保留本機；雲端前端經已授權的 Cloudflare HTTPS 連線轉送問答與圖片請求。**不是所有流量皆只在本機的架構。**Ollama 管理介面與資料庫不直接公開。
 
----
+電腦、Ollama、API 及連線服務需持續運作；RTX 4060 8GB 依序處理問答，首次載入及切換模型可能較慢。Quick Tunnel 不保證持續可用。目前為共用存取碼的單一工作區，共用問答紀錄及小知識，沒有多使用者資料隔離。
 
-## 快速開始
+## 四模型
 
-### 1. 環境需求
+| ID | 模型 | 已核對標籤 | 量化 |
+|---|---|---|---|
+| M1 | DeepSeek-R1-Distill-Qwen-7B | `deepseek-r1:7b` | Q4_K_M |
+| M2 | Qwen2.5-Coder-7B-Instruct | `qwen2.5-coder:7b` | Q4_K_M |
+| M3 | DeepSeek-R1-Distill-Llama-8B | `hf.co/bartowski/DeepSeek-R1-Distill-Llama-8B-GGUF:Q4_K_M` | Q4_K_M |
+| M4 | Gemma2-9B-It | `gemma2:9b` | Q4_0 |
 
-- Python 3.11+
-- [Ollama](https://ollama.com/)（本機運行 LLM 與向量模型）
-- Windows：若要處理舊版 `.doc` 檔案，需安裝 Microsoft Word
+M3 必須是 **Llama 8B**；本機 `deepseek-r1:8b` 曾核實為 Qwen3，不能替代。Embedding 使用 `bge-m3:latest`，Reranker 為已核實的 `BAAI/bge-reranker-v2-m3`。完整 digest 見公開狀態摘要及本機登錄。
 
-### 2. 安裝
+## 知識庫規模與使用範圍
+
+以下為已保存的 v6 Manifest 計數，代表處理規模，**不代表每段均經專家核實**。
+
+| 項目 | 數量 |
+|---|---:|
+| 來源登錄 / 原始文件身分 | 100 / 98 |
+| 文件頁面 | 1,278 |
+| Chunk | 24,283 |
+| Retrieval-eligible / Context-only | 13,794 / 10,489 |
+| 圖像資產與圖像向量 | 6,637 |
+| 表格元素 | 486 |
+
+原件與衍生資料保存在 `my_data/RAG來源資料總庫/`，已依官方法規、歷史法規、養殖技術、疾病、水質氣候、用藥、統計及圖片表格分類。OCR、複雜表格與部分適用性仍保留待複核狀態。
+
+研究負責人准入不等於第三方公開散布許可。政府資料開放授權僅適用已核實的實際資源；第三方全文、圖片及向量庫不隨程式庫公開。DGBAS 2020 僅限單年度描述性 Fact；用藥許可快照不代表現行處方，不能推導未記載的劑量、頻率或停藥期。
+
+## 目錄與資料保留
+
+| 路徑 | 用途 |
+|---|---|
+| `streamlit_cloud/` | 網站前端、原創圖示與背景 |
+| `src/` | 資料解析、評測與 v4–v6 檢索；v6 仍依賴共用的 v4/v5 模組 |
+| `scripts/`、`tools/` | 研究流程、建置、驗證、評測與部署工具 |
+| `tests/` | Repository 測試 |
+| `config/`、`configs/`、`schemas/`、`prompts/` | 處理設定、結構規格與 Prompt |
+| `docs/` | 方法文件、檔案導覽與可公開的聚合結果 |
+| `research_staging/app_sessions/` | 隔離應用程式；狀態與日誌只留本機 |
+| `research_staging/deployment/` | 本機服務程式快照，不含憑證與 vendor |
+| `my_data/`、`data/`、`fish test/`、`rag_assets/` | 原件、歷史 Corpus、題庫與素材，只留本機 |
+| `reports/` | 完整結果、JSONL 與 Excel 留本機；僅同步程式快照至 GitHub |
+
+見 [檔案導覽](docs/PROJECT_LAYOUT.md) 與 [研究結果摘要](docs/research_results/README.md)。本輪沒有移動資料庫或改寫歷史引用路徑。
+
+## 啟動前端
+
+公開 repository 不含第三方原件、索引、模型或憑證。完整問答依賴已配置的私有後端，不能只下載程式就重建所有研究資料。
 
 ```powershell
-# 建立虛擬環境
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-
-# 安裝依賴
-pip install -r requirements.txt
+python -m venv .venv-web
+.\.venv-web\Scripts\python.exe -m pip install -r streamlit_cloud/requirements.txt
+.\.venv-web\Scripts\python.exe -m streamlit run streamlit_cloud/streamlit_app.py
 ```
 
-### 3. 拉取向量模型
+在 Streamlit Secrets 設定 `RAG_BACKEND_DISCOVERY_URL`、`RAG_API_KEY`、`APP_ACCESS_CODE`，範例見 `streamlit_cloud/.streamlit/secrets.toml.example`。不要提交真正金鑰或存取碼。
+
+雲端採 Python 3.14；Parser、ML 與測試使用既有隔離環境，前端 requirements 不能代替完整研究環境。現有 Windows 機器可使用本機保留的 `research_staging/deployment/streamlit_cloud_20261122_143650/start_knowledge_service.cmd` 啟動服務；該檔依賴本機憑證與環境，不對外同步。
+
+目前 Community Cloud 追蹤 **`codex/streamlit-cloud`**，入口 `streamlit_cloud/streamlit_app.py`；推送 main 不會自動切換部署分支。
+
+## 測試與研究結果
+
+使用已配置的研究 Interpreter 執行正式測試：
 
 ```powershell
-ollama pull bge-m3
+$env:PYTHONDONTWRITEBYTECODE = '1'
+python -m pytest tests -q -p no:cacheprovider
 ```
 
-> BGE-M3 是 BAAI 開源的多語言向量模型，支援繁體中文、8192 token 上下文。
+部分整合測試依賴本機歷史 Manifest、來源與模型。在只有公開程式碼的環境，缺少私有資料時不能宣稱完整通過；測試依賴與本次結果見公開摘要。
 
-### 4. 建立向量索引
+現行 v6 已保存 **180 題 × 4 模型 = 720 筆最終生成**，重試原始紀錄另存。11 項指標：Faithfulness、Judge Answer Relevance、BGE-M3 Cosine、Structured IFR、TTFT、TPS、System RAM、Dedicated VRAM、Context Precision@5、Logical Accuracy、Arithmetic Accuracy，各自保留有效 N。
 
-```powershell
-# 首次建立
-python build_index.py
+使用者已確認品質 70%／效能 30% 的探索性選型方案，該方案推薦 **M2**。正規化仍含公開假設，總分不等於答對率、正式凍結論文分數或統計顯著性；網站仍保留四模型切換。
 
-# 強制重建（清除舊資料）
-python build_index.py --rebuild
+Human Gold 為 **0**。50 題自動來源核驗子集包含 37 題 Logical 與 13 題 Arithmetic，來源群組有限。P@5 只能報告實際 Context 與可靠標籤一致的子集。RAM／VRAM 為系統層級採樣峰值，JSON IFR 不代表語意遵循或專業正確性。
+
+2026-11-22 已實際呼叫四模型並驗證線上切換。M1 引用失敗、M3 無據延伸的案例已保留原始結果並攔截相關網站輸出；守門檢查不是完整的專業正確性保證。
+
+## 整理與保護
+
+本輪只清除可重建的程式快取，以及經 SHA-256 與 ZIP 格式檢查確認損毀、未入庫的下載檔及副本。刪除收據保留在本機 `research_staging/maintenance/cleanup_publish_20261122/`。
+
+原件、Python 環境、模型、資料庫、歷史索引、生成紀錄與 Excel 全部保留；不可存取的快取不強行更改權限。Frozen Manifest 維持 **636/636**。正式 SQLite SHA-256：
+
+```text
+d7d06d4d2a57d0a57d05bcb6131ffb24aefb226c6bd36349dbc5118d33b11087
 ```
 
-建立過程會顯示：
-- 已處理的文件清單
-- 嵌入進度百分比
-- 無法讀取的檔案清單（及錯誤原因）
-
-### 5. 啟動問答介面
-
-```powershell
-streamlit run app.py
-```
-
-瀏覽器開啟 `http://localhost:8501`
-
----
-
-## 支援格式
-
-| 格式 | 擷取方式 | 表格支援 | 圖片支援 |
-|------|---------|---------|---------|
-| `.pdf` | PyMuPDF | ✅ Markdown 化 | ✅ 存檔索引 |
-| `.docx` | python-docx | ✅ | ❌ |
-| `.doc` | Word COM（需 Microsoft Word）| ✅ | ❌ |
-| `.odt` | ZIP + ElementTree XML | ✅ | ❌ |
-| `.txt` / `.md` | 純文字讀取 | ❌ | ❌ |
-
-> **`.doc` 說明**：舊版 Word 格式透過 `win32com` 呼叫 Microsoft Word 另存為 `.docx`，再用 python-docx 解析保留表格結構。若電腦未安裝 Word，建索引完成後終端機會列出該檔案的錯誤；請手動另存為 `.docx` 或 `.pdf` 後執行 `--rebuild`。
-
----
-
-## 資料清洗規則
-
-### 頁首/頁尾去除
-
-自動過濾以下噪音（不影響語意內容）：
-- 頁碼（`第 N 頁`、`N/M`、`— N —`）
-- 出版機構標頭（農業部、水產試驗所等）
-- 跨頁重複行（出現頻率 ≥ 60% 的行）
-- 版權宣告、水平分隔線
-
-### 術語校正清單
-
-| 原文 | 校正為 |
-|------|-------|
-| 吳鍋魚、吳郭漁、吴郭鱼 | 吳郭魚 |
-| 虱目漁、虱目渔 | 虱目魚 |
-| 石班魚、石斑仔 | 石斑魚 |
-| 金目鱸魚、鱸仔魚 | 金目鱸 |
-| 七星鱸魚、海鱸、花鱸 | 七星鱸 |
-| 烏仔魚 | 烏魚 |
-| 泰國蝦 | 泰國蝦（*Macrobrachium rosenbergii*）|
-| 草蝦 | 草蝦（*Penaeus monodon*）|
-| 鰻苗、鰻仔 | 鰻魚苗 / 鰻魚 |
-
----
-
-## 切塊策略
-
-### 階層式切塊（Hierarchical Chunking）
-
-依章節結構切分：`章 > 節 > 小節 > 段落`（最多 4 層）
-
-```
-第三章 水產養殖管理
-  └─ 第四節 石斑魚
-       └─ 二、疾病防治
-            └─ （一）虹彩病毒  ← 此為一個切塊的 hierarchy
-```
-
-### 切塊參數
-
-| 參數 | 數值 |
-|------|------|
-| 目標長度 | 420 字 |
-| 最大長度 | 500 字 |
-| Overlap | 70 字（跨頁銜接） |
-| 斷點優先 | `。！？；;` → 換行 → 強制截斷 |
-
-### Metadata（每切塊自動注入）
-
-```json
-{
-  "fish_species": ["石斑魚"],
-  "disease_name": ["虹彩病毒"],
-  "doc_type": "病害圖鑑",
-  "source": "my_data/技術手冊17-第三章水產養殖管理技術 第四節石斑魚.pdf，第 42 頁",
-  "hierarchy": "第三章 水產養殖管理 > 第四節 石斑魚 > 二、疾病防治"
-}
-```
-
----
-
-## 問答模型
-
-可在介面中切換以下 Ollama 本機模型：
-
-| 模型 | 下載指令 | 特色 |
-|------|---------|------|
-| `gemma2:9b` | `ollama pull gemma2:9b` | Google，繁中流暢 |
-| `deepseek-r1:8b` | `ollama pull deepseek-r1:8b` | 推理能力強 |
-| `qwen2.5-coder:7b` | `ollama pull qwen2.5-coder:7b` | 適合結構化回答 |
-| `deepseek-r1:7b` | `ollama pull deepseek-r1:7b` | 輕量推理 |
-
----
-
-## 環境變數
-
-| 變數 | 預設值 | 說明 |
-|------|--------|------|
-| `OLLAMA_HOST` | `http://127.0.0.1:11434` | Ollama 服務位址 |
-| `EMBED_MODEL` | `bge-m3:latest` | 向量嵌入模型 |
-
-```powershell
-# 使用遠端 Ollama 服務
-$env:OLLAMA_HOST = "http://192.168.1.10:11434"
-streamlit run app.py
-```
-
----
-
-## 命令列問答
-
-```powershell
-python chat.py "石斑魚常見養殖管理重點是什麼？" --model gemma2:9b
-```
-
----
-
-## 新增文件
-
-1. 將 PDF / DOCX / DOC / ODT 放入 `my_data/`
-2. 執行 `python build_index.py --rebuild` 重建索引
-
----
-
-## 授權
-
-本系統程式碼以 MIT 授權釋出；`my_data/` 中的文件版權歸各原始出版單位所有。
+根目錄 `LICENSE` 不擴張至第三方來源、模型或資料集；另依各自條款與適用範圍使用。

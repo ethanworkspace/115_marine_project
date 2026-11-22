@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Silver Retrieval Experiment Manifest",
+  "description": "Reproducibility record for an AI-generated Silver retrieval experiment.",
+  "type": "object",
+  "required": [
+    "experiment_id", "timestamp", "benchmark_type", "generation_source", "question_origin", "evidence_mapping_type",
+    "silver_dataset_version", "silver_dataset_sha256", "evaluation_corpus_version",
+    "evaluation_corpus_sha256", "retriever_type", "retriever_config", "index_manifest",
+    "top_k", "git_commit", "primary_mapping_statuses", "production_retrieval_used",
+    "ranking_uses_expected_evidence", "quality_claim"
+  ],
+  "properties": {
+    "experiment_id": {"type": "string"},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "benchmark_type": {"const": "silver"},
+    "generation_source": {"const": "ai_question_bank"},
+    "question_origin": {"const": "ai_generated"},
+    "evidence_mapping_type": {"const": "auto_mapped"},
+    "silver_dataset_version": {"type": "string"},
+    "silver_dataset_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "evaluation_corpus_version": {"type": "string"},
+    "evaluation_corpus_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "retriever_type": {"type": "string"},
+    "retriever_config": {"type": "object"},
+    "index_manifest": {"type": "object"},
+    "top_k": {"type": "array", "items": {"type": "integer", "minimum": 1}},
+    "git_commit": {"type": "string"},
+    "primary_mapping_statuses": {"type": "array", "items": {"enum": ["exact", "high_confidence"]}},
+    "production_retrieval_used": {"const": false},
+    "ranking_uses_expected_evidence": {"const": false},
+    "quality_claim": {"type": "string"}
+  }
+}
