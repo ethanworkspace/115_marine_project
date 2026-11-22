@@ -14,7 +14,7 @@ for name in ('ocean_watercolor_chibi_background.png','watercolor_chat.png','wate
 shutil.copy2(APP/'platform_watercolor.css',OUT/'frontend/platform_watercolor.css')
 shutil.copy2(APP/'knowledge_platform.py',OUT/'reports/local_ui_reference.py')
 (OUT/'deployment_plan.json').write_text(json.dumps({'provider':'Streamlit Community Cloud','status':'BUILDING_NOT_DEPLOYED',
-    'github_repository':'ethanworkspace/115_marine_project','branch':'codex/streamlit-cloud',
+    'github_repository':'ethanworkspace/hybrid-rag-aquaculture-knowledge-platform','branch':'main',
     'repository_frontend_path':'streamlit_cloud/streamlit_app.py','desired_subdomain':'marine-knowledge-platform',
     'requested_public_url':'https://marine-knowledge-platform.streamlit.app','url_not_reserved_or_verified':True,
     'backend_local_url':'http://127.0.0.1:8765','model_id':'M2','models_and_corpus_uploaded':False,

@@ -54,7 +54,7 @@ assert 'C:\\my project' not in text and 'UnifiedQuestionRag' not in text
 (WORK/'frontend/streamlit_app.py').write_text(text,encoding='utf-8')
 (WORK/'frontend/requirements.txt').write_text('streamlit==1.67.0\nrequests==2.34.2\npillow==13.0.0\npyarrow==24.0.0\n',encoding='utf-8')
 (WORK/'frontend/.streamlit/config.toml').write_text('[theme]\nbase = "light"\nprimaryColor = "#518BB1"\nbackgroundColor = "#F3FAFF"\nsecondaryBackgroundColor = "#F4FAFE"\ntextColor = "#24445A"\n\n[browser]\ngatherUsageStats = false\n',encoding='utf-8')
-(WORK/'frontend/.streamlit/secrets.toml.example').write_text('RAG_BACKEND_DISCOVERY_URL = "https://raw.githubusercontent.com/ethanworkspace/hybrid-rag-aquaculture-knowledge-platform/refs/heads/codex/streamlit-cloud/streamlit_cloud/backend_endpoint.json"\nRAG_API_KEY = "SET_IN_STREAMLIT_SECRETS_ONLY"\nAPP_ACCESS_CODE = "SET_IN_STREAMLIT_SECRETS_ONLY"\n',encoding='utf-8')
+(WORK/'frontend/.streamlit/secrets.toml.example').write_text('RAG_BACKEND_DISCOVERY_URL = "https://raw.githubusercontent.com/ethanworkspace/hybrid-rag-aquaculture-knowledge-platform/refs/heads/main/streamlit_cloud/backend_endpoint.json"\nRAG_API_KEY = "SET_IN_STREAMLIT_SECRETS_ONLY"\nAPP_ACCESS_CODE = "SET_IN_STREAMLIT_SECRETS_ONLY"\n',encoding='utf-8')
 (WORK/'frontend/.gitignore').write_text('.streamlit/secrets.toml\n__pycache__/\n*.sqlite3\n*.log\n.env\n',encoding='utf-8')
 (WORK/'frontend/README.md').write_text('''# Aquaculture Knowledge Platform（養殖漁業知識平台）
 

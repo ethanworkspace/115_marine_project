@@ -43,7 +43,7 @@ subprocess.run([sys.executable,'-B',str(ROOT/'tools/record_streamlit_cloud_endpo
 checkout=WORK/'github_checkout'
 git=r'C:\Program Files\Git\cmd\git.exe'
 def g(*args):return subprocess.check_output([git,'-C',str(checkout),*args],env=env,text=True).strip()
-assert g('branch','--show-current')=='codex/streamlit-cloud'
+assert g('branch','--show-current')=='main'
 assert g('remote','get-url','origin')=='https://github.com/ethanworkspace/hybrid-rag-aquaculture-knowledge-platform.git'
 assert not g('diff','--cached','--name-only'),'Unrelated staged files require review before endpoint update.'
 target=checkout/'streamlit_cloud/backend_endpoint.json'
@@ -53,5 +53,5 @@ changed=g('diff','--cached','--name-only')
 if changed:
     assert changed=='streamlit_cloud/backend_endpoint.json'
     g('-c','user.name=Ethan','-c','user.email=255327343+ethanworkspace@users.noreply.github.com','commit','-m','Refresh local knowledge API endpoint')
-    g('push','origin','codex/streamlit-cloud')
+    g('push','origin','main')
 print('Local knowledge service is ready. Keep this computer and Ollama running.')
