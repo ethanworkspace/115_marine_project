@@ -86,7 +86,7 @@ python -m venv .venv-web
 
 在 Streamlit Secrets 設定 `RAG_BACKEND_DISCOVERY_URL`、`RAG_API_KEY`、`APP_ACCESS_CODE`，範例見 `streamlit_cloud/.streamlit/secrets.toml.example`。不要提交真正金鑰或存取碼。
 
-雲端採 Python 3.14；Parser、ML 與測試使用既有隔離環境，前端 requirements 不能代替完整研究環境。現有 Windows 機器可使用本機保留的 `research_staging/deployment/streamlit_cloud_20261122_143650/start_knowledge_service.cmd` 啟動服務；該檔依賴本機憑證與環境，不對外同步。
+雲端採 Python 3.13；Parser、ML 與測試使用既有隔離環境，前端 requirements 不能代替完整研究環境。現有 Windows 機器可使用本機保留的 `research_staging/deployment/streamlit_cloud_20261122_143650/start_knowledge_service.cmd` 啟動服務；該檔依賴本機憑證與環境，不對外同步。
 
 目前 Community Cloud 追蹤 **`main`**，入口 `streamlit_cloud/streamlit_app.py`；網站與後端連線清單統一使用 main。
 

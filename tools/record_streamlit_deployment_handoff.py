@@ -15,7 +15,7 @@ assert ui['status']=='PASS' and smoke['status']=='PASS'
 report={'status':'WAITING_STREAMLIT_ACCOUNT_SIGN_IN','at':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(),
     'streamlit_deployed':False,'streamlit_public_url':None,'desired_subdomain':'marine-knowledge-platform','subdomain_reserved_or_available_verified':False,
     'repository':'https://github.com/ethanworkspace/hybrid-rag-aquaculture-knowledge-platform','branch':'main','commit':revision,
-    'entrypoint':'streamlit_cloud/streamlit_app.py','python_version':'3.14','frontend_code_published':True,
+    'entrypoint':'streamlit_cloud/streamlit_app.py','python_version':'3.13','frontend_code_published':True,
     'cloudflare_transfer_owner_approved':True,'app_access_code_required':True,'api_bearer_key_required':True,
     'private_config_uploaded_to_github':False,'original_model_corpus_or_evaluation_results_uploaded':False,
     'local_backend_https_verified':True,'local_http_and_ui_checks':len(ui['checks']),'actual_m2_https_generation_passed':True,
@@ -40,7 +40,7 @@ instructions='''Streamlit 上線進度
 Repository: ethanworkspace/115_marine_project
 Branch: main
 Main file: streamlit_cloud/streamlit_app.py
-Python: 3.14
+Python: 3.13
 建議網址名稱：marine-knowledge-platform（尚未確認是否可用）
 
 真正的 Secrets 位於本工作區 .private/streamlit_secrets.toml，只可貼入 Streamlit 的 Secrets 設定，不可提交 GitHub。
