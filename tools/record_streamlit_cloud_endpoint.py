@@ -29,7 +29,7 @@ manifest={'backend_url':url,'updated_at':datetime.datetime.now(datetime.timezone
     'service':'marine-knowledge-api','credentials_not_in_this_file':True,'signature_version':'hmac-sha256-v1'}
 manifest['signature']=hmac.new(secret['api_key'].encode(),json.dumps(manifest,sort_keys=True,separators=(',',':')).encode(),hashlib.sha256).hexdigest()
 (WORK/'frontend/backend_endpoint.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
-discovery='https://raw.githubusercontent.com/ethanworkspace/115_marine_project/refs/heads/codex/streamlit-cloud/streamlit_cloud/backend_endpoint.json'
+discovery='https://raw.githubusercontent.com/ethanworkspace/hybrid-rag-aquaculture-knowledge-platform/refs/heads/codex/streamlit-cloud/streamlit_cloud/backend_endpoint.json'
 lines=['RAG_BACKEND_DISCOVERY_URL = '+json.dumps(discovery),'RAG_API_KEY = '+json.dumps(secret['api_key']),'APP_ACCESS_CODE = '+json.dumps(secret['app_access_code'])]
 (WORK/'.private/streamlit_secrets.toml').write_text('\n'.join(lines)+'\n',encoding='utf-8')
 (WORK/'.private/owner_access_code.txt').write_text(secret['app_access_code']+'\n',encoding='utf-8')

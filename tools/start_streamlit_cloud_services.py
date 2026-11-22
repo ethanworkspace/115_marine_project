@@ -44,7 +44,7 @@ checkout=WORK/'github_checkout'
 git=r'C:\Program Files\Git\cmd\git.exe'
 def g(*args):return subprocess.check_output([git,'-C',str(checkout),*args],env=env,text=True).strip()
 assert g('branch','--show-current')=='codex/streamlit-cloud'
-assert g('remote','get-url','origin')=='https://github.com/ethanworkspace/115_marine_project.git'
+assert g('remote','get-url','origin')=='https://github.com/ethanworkspace/hybrid-rag-aquaculture-knowledge-platform.git'
 assert not g('diff','--cached','--name-only'),'Unrelated staged files require review before endpoint update.'
 target=checkout/'streamlit_cloud/backend_endpoint.json'
 shutil.copy2(WORK/'frontend/backend_endpoint.json',target)

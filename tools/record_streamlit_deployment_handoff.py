@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 WORK=Path(json.loads((ROOT/'research_staging/streamlit_cloud_deployment_pointer.json').read_text(encoding='utf-8'))['directory'])
 git=r'C:\Program Files\Git\cmd\git.exe'
 revision=subprocess.check_output([git,'-C',str(WORK/'github_checkout'),'rev-parse','HEAD'],text=True).strip()
-discovery='https://raw.githubusercontent.com/ethanworkspace/115_marine_project/refs/heads/codex/streamlit-cloud/streamlit_cloud/backend_endpoint.json'
+discovery='https://raw.githubusercontent.com/ethanworkspace/hybrid-rag-aquaculture-knowledge-platform/refs/heads/codex/streamlit-cloud/streamlit_cloud/backend_endpoint.json'
 manifest=requests.get(discovery,timeout=(10,30));manifest.raise_for_status()
 assert manifest.json()['backend_url']==json.loads((WORK/'frontend/backend_endpoint.json').read_text(encoding='utf-8'))['backend_url']
 ui=json.loads((WORK/'reports/api_and_ui_validation.json').read_text(encoding='utf-8'))
@@ -14,7 +14,7 @@ smoke=json.loads((WORK/'reports/real_async_https_m2_smoke.json').read_text(encod
 assert ui['status']=='PASS' and smoke['status']=='PASS'
 report={'status':'WAITING_STREAMLIT_ACCOUNT_SIGN_IN','at':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).isoformat(),
     'streamlit_deployed':False,'streamlit_public_url':None,'desired_subdomain':'marine-knowledge-platform','subdomain_reserved_or_available_verified':False,
-    'repository':'https://github.com/ethanworkspace/115_marine_project','branch':'codex/streamlit-cloud','commit':revision,
+    'repository':'https://github.com/ethanworkspace/hybrid-rag-aquaculture-knowledge-platform','branch':'codex/streamlit-cloud','commit':revision,
     'entrypoint':'streamlit_cloud/streamlit_app.py','python_version':'3.14','frontend_code_published':True,
     'cloudflare_transfer_owner_approved':True,'app_access_code_required':True,'api_bearer_key_required':True,
     'private_config_uploaded_to_github':False,'original_model_corpus_or_evaluation_results_uploaded':False,

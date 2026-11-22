@@ -1,8 +1,10 @@
-# Aquaculture Knowledge Platform｜養殖漁業知識平台
+# Hybrid-RAG Aquaculture Knowledge Platform｜養殖漁業知識平台
 
 臺灣水產養殖 Hybrid-RAG 知識問答與四模型評測專案，涵蓋虱目魚、吳郭魚、石斑魚、鱸魚、烏魚及鰻魚。
 
 網站：**https://aquaculture-knowledge-platform.streamlit.app/**（需工作區存取碼）。更新日期：2026-11-22。
+
+GitHub 專案：https://github.com/ethanworkspace/hybrid-rag-aquaculture-knowledge-platform。
 
 ## 現行系統
 
