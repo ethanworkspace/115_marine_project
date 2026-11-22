@@ -35,14 +35,14 @@ def discover_backend(discovery_url):
 def gate():
     code=setting('APP_ACCESS_CODE')
     if not code:
-        st.title('水產知識平台')
+        st.title('Aquaculture Knowledge Platform')
         st.info('網站已準備就緒，尚需設定研究工作區的存取碼與本機知識服務連線。')
         st.stop()
     stamp=hashlib.sha256(code.encode()).hexdigest()
     if hmac.compare_digest(str(st.session_state.get('_cloud_access_hash','')),stamp):
         st.session_state.pop('cloud_access_input',None)
         return
-    st.title('歡迎來到水產知識平台')
+    st.title('Aquaculture Knowledge Platform')
     st.caption('輸入工作區存取碼，開始問答與記錄小知識。')
     with st.form('cloud_login'):
         supplied=st.text_input('工作區存取碼',type='password',key='cloud_access_input')

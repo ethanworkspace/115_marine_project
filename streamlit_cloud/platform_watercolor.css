@@ -13,7 +13,7 @@ html,body,[data-testid="stApp"]{font-family:"Noto Sans TC","Microsoft JhengHei",
 [data-testid="stSidebar"] hr{margin:1.1rem 0;border-color:var(--line)}
 .brand{display:flex;align-items:center;gap:10px;margin:.1rem 0 1.8rem}
 .brand img{width:52px;height:52px;object-fit:contain;flex-shrink:0}
-.brand-name{font-size:17px;font-weight:750;letter-spacing:1.1px;color:#345b73;white-space:nowrap}
+.brand-name{font-size:15px;font-weight:750;letter-spacing:.2px;line-height:1.35;color:#345b73;white-space:normal}
 .brand-sub{font-size:9px;letter-spacing:1.3px;color:#8aa3b3;margin-top:6px}
 .sidebar-label{font-size:11px;color:#829ba9;font-weight:600;letter-spacing:1.4px;margin:.1rem 0 .7rem}
 .side-foot{font-size:11px;line-height:1.8;color:#8ca2b0;margin-top:1rem}

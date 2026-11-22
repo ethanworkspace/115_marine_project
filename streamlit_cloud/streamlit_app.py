@@ -16,7 +16,7 @@ MODELS = {'M2':'Qwen2.5 Coder · 7B'}
 CATEGORIES = {'Fact':'養殖知識','Water Quality':'水質環境','Disease':'疾病防治','Climate / Cold':'氣候防寒','Medication / Law':'用藥規範','Calculation':'養殖計算'}
 FISH = ['虱目魚','吳郭魚','石斑魚','鱸魚','烏魚','鰻魚']
 NAV = [('知識問答','chat'),('小知識','knowledge'),('本次紀錄','history')]
-st.set_page_config(page_title='臺灣水產養殖知識平台',page_icon=str(SESSION/'assets/watercolor_chat.png'),layout='wide',initial_sidebar_state='auto')
+st.set_page_config(page_title='Aquaculture Knowledge Platform',page_icon=str(SESSION/'assets/watercolor_chat.png'),layout='wide',initial_sidebar_state='auto')
 
 @st.cache_data(show_spinner=False)
 def asset_uri(filename):
@@ -130,7 +130,7 @@ try:
     active = {'version':'remote-current-rag-v6','workspace':''}
     questions,sources = load_content(active['version'],active['workspace'])
 except Exception as exc:
-    st.title('臺灣水產養殖知識平台')
+    st.title('Aquaculture Knowledge Platform')
     st.error('問答服務暫時無法載入，請稍後再試。')
     with st.expander('連線資訊'): st.code(str(exc))
     st.stop()
@@ -140,7 +140,7 @@ if st.session_state.get('platform_question_mode') not in ['自由提問','挑選
 page = st.session_state['platform_page']
 
 with st.sidebar:
-    html('<div class="brand"><img src="'+ICONS['chat']+'" alt=""><div><div class="brand-name">水產知識平台</div><div class="brand-sub">MARINE KNOWLEDGE</div></div></div>')
+    html('<div class="brand"><img src="'+ICONS['chat']+'" alt=""><div><div class="brand-name">Aquaculture<br>Knowledge Platform</div><div class="brand-sub">養殖漁業知識平台</div></div></div>')
     html('<div class="sidebar-label">探索與記錄</div>')
     for name,icon in NAV:
         st.button(name,key='nav_'+icon,on_click=navigate,args=(name,),type='primary' if page==name else 'secondary',width='stretch')
@@ -276,4 +276,4 @@ else:
         html('<div class="empty-state"><img src="'+ICONS['history']+'" alt=""><strong>新的發現，從一個問題開始。</strong><p>完成問答後，就能在這裡找回紀錄。</p></div>')
         st.button('開始第一個問答',on_click=navigate,args=('知識問答',),key='first_question')
 
-html('<div class="page-footer"><span>MARINE KNOWLEDGE · 水產養殖知識平台</span><span>慢慢探索，日日有新知。</span></div>')
+html('<div class="page-footer"><span>Aquaculture Knowledge Platform · 養殖漁業知識平台</span><span>慢慢探索，日日有新知。</span></div>')

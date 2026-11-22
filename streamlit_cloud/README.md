@@ -1,4 +1,4 @@
-# 水產養殖知識平台（Streamlit介面）
+# Aquaculture Knowledge Platform（養殖漁業知識平台）
 
 這個目錄僅包含雲端介面、原創圖示與背景。M2、RAG、來源原件與筆記儲存在私有本機服務。
 
