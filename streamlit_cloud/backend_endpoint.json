@@ -1,6 +1,8 @@
 {
   "backend_url": "https://cleveland-launches-arctic-alpha.trycloudflare.com",
-  "updated_at": "2026-11-22T14:59:18.286902+08:00",
+  "updated_at": "2026-11-22T15:32:35.043549+08:00",
   "service": "marine-knowledge-api",
-  "credentials_not_in_this_file": true
+  "credentials_not_in_this_file": true,
+  "signature_version": "hmac-sha256-v1",
+  "signature": "05104079275ffad60a9db70ebad1a3789fa00ff0831ae4cb6e840bcac6dbec83"
 }

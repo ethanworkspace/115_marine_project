@@ -10,13 +10,13 @@ sys.dont_write_bytecode = True
 SESSION = Path(__file__).resolve().parent
 sys.path.insert(0, str(SESSION))
 import streamlit as st
-from cloud_client import get_client, RemoteNotes as KnowledgeNotes, TOPICS, SPECIES as NOTE_SPECIES, gate
+from cloud_client import get_client, RemoteNotes as KnowledgeNotes, TOPICS, SPECIES as NOTE_SPECIES, gate, safe_answer_markdown
 
 MODELS = {'M2':'Qwen2.5 Coder · 7B'}
 CATEGORIES = {'Fact':'養殖知識','Water Quality':'水質環境','Disease':'疾病防治','Climate / Cold':'氣候防寒','Medication / Law':'用藥規範','Calculation':'養殖計算'}
 FISH = ['虱目魚','吳郭魚','石斑魚','鱸魚','烏魚','鰻魚']
 NAV = [('知識問答','chat'),('小知識','knowledge'),('本次紀錄','history')]
-st.set_page_config(page_title='Aquaculture Knowledge Platform',page_icon=str(SESSION/'assets/watercolor_chat.png'),layout='wide',initial_sidebar_state='auto')
+st.set_page_config(page_title='Aquaculture Knowledge Platform',page_icon=str(SESSION/'assets/aquaculture_fish_favicon_v1.png'),layout='wide',initial_sidebar_state='auto')
 
 @st.cache_data(show_spinner=False)
 def asset_uri(filename):
@@ -105,14 +105,14 @@ def show_answer(record):
     info = record_details(record)
     html('<div class="answer-question">'+escape(info.get('question',record.get('question_id','')))+'</div>')
     if record.get('api_error'): st.warning('模型連線未完成，以下保留本次資訊缺口說明。')
-    st.markdown(result.get('final_answer','本次未取得可顯示的回答。'))
+    st.markdown(safe_answer_markdown(result.get('final_answer','本次未取得可顯示的回答。')),unsafe_allow_html=False)
     origins = {'MODEL_GENERATED':'模型回答','DETERMINISTIC_EVIDENCE_EXTRACTION':'來源內容摘取',
         'SYSTEM_GUIDANCE':'查核說明','ABSTAINED':'資訊缺口說明','VALIDATION_FAILED':'輸出待核對'}
     origin = result.get('answer_origin','')
     html('<div class="answer-meta">'+escape(MODELS.get(record['model_id'],record['model_id']))+' · '+escape(origins.get(origin,origin))+'</div>')
     if result.get('missing_information'):
         with st.expander('尚需補充的資訊'):
-            for item in result['missing_information']: st.markdown('- '+str(item))
+            for item in result['missing_information']: st.markdown(safe_answer_markdown('- '+str(item)),unsafe_allow_html=False)
     show_citations(record)
     left,right = st.columns(2)
     with left:
