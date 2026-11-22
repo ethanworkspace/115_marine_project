@@ -12,7 +12,7 @@ sys.path.insert(0, str(SESSION))
 import streamlit as st
 from cloud_client import get_client, RemoteNotes as KnowledgeNotes, TOPICS, SPECIES as NOTE_SPECIES, gate, safe_answer_markdown
 
-MODELS = {'M2':'Qwen2.5 Coder · 7B'}
+MODELS = {'M1':'M1 · DeepSeek R1 · Qwen 7B', 'M2':'M2 · Qwen2.5 Coder · 7B', 'M3':'M3 · DeepSeek R1 · Llama 8B', 'M4':'M4 · Gemma 2 · 9B'}
 CATEGORIES = {'Fact':'養殖知識','Water Quality':'水質環境','Disease':'疾病防治','Climate / Cold':'氣候防寒','Medication / Law':'用藥規範','Calculation':'養殖計算'}
 FISH = ['虱目魚','吳郭魚','石斑魚','鱸魚','烏魚','鰻魚']
 NAV = [('知識問答','chat'),('小知識','knowledge'),('本次紀錄','history')]
@@ -147,9 +147,10 @@ with st.sidebar:
     st.divider()
     with st.expander('問答偏好'):
         species = st.selectbox('養殖魚種',['全部魚種']+FISH,key='platform_species',format_func=lambda s:'自動辨識魚種' if s=='全部魚種' else s)
-        model = st.selectbox('回答模型',list(MODELS),index=0,key='platform_model',format_func=lambda m:MODELS[m])
+
         html('<div class="model-note">也可以直接在問題中說明魚種、場域與條件。</div>')
-    html('<div class="side-foot">一個問題，一點新發現。<br><small>M2與知識服務於本機運作</small></div>')
+    model = st.session_state.get('platform_model','M2')
+    html('<div class="side-foot">一個問題，一點新發現。<br><small>四款模型與知識服務於本機運作</small></div>')
 
 if page=='知識問答':
     html('<div class="hero"><div><div class="eyebrow">A LITTLE KNOWLEDGE, EVERY DAY</div><h1>養殖疑問，慢慢聊清楚。</h1><p>從日常管理到水質環境，提出你的問題，<br>一起找出有依據的答案。</p></div><img src="'+ICONS['chat']+'" alt="淡藍水彩魚兒對話圖示"></div>')
@@ -158,6 +159,7 @@ if page=='知識問答':
     with left:
         with st.container(border=True,key='query_panel'):
             section('今天想了解什麼？','說明魚種與遇到的情況，能幫助找到更合適的內容。')
+            model = st.selectbox('回答模型',list(MODELS),index=1,key='platform_model',format_func=lambda m:MODELS[m],help='預設使用M2。切換模型時可能需要等待載入；目前依序處理問答。')
             mode = st.radio('提問方式',['自由提問','挑選問題'],horizontal=True,key='platform_question_mode',label_visibility='collapsed')
             if mode=='自由提問':
                 text = st.text_area('你的養殖問題',placeholder='例如：虱目魚寒流來時，魚塭有哪些操作應避免？',height=140,max_chars=2000,key='platform_free_question',label_visibility='collapsed')

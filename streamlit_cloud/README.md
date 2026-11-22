@@ -1,6 +1,6 @@
 # Aquaculture Knowledge Platform（養殖漁業知識平台）
 
-這個目錄僅包含雲端介面、原創圖示與背景。M2、RAG、來源原件與筆記儲存在私有本機服務。
+這個目錄僅包含雲端介面、原創圖示與背景。網站可選M1–M4，預設M2；模型、RAG、來源原件與筆記儲存在私有本機服務。模型身分依本機核實登錄逐次檢查，未提供任意模型標籤存取。
 
 Community Cloud入口：`streamlit_cloud/streamlit_app.py`。請在Secrets設定`RAG_BACKEND_DISCOVERY_URL`、`RAG_API_KEY`及`APP_ACCESS_CODE`，不要提交任何真正金鑰。部署使用Python 3.14。連線清單僅含公開後端網址，不能代替API金鑰；本機連線重啟時須更新該清單。
 
